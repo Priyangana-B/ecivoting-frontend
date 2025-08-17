@@ -1,0 +1,34 @@
+/* .logo-ecinet {
+  height: 40px;
+}
+.search-area {
+  display: flex;
+  gap: 0.5rem;
+}
+.search-area input {
+  padding: 0.6rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+.search-area button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.search-btn-green {
+  background-color: #28a745;
+}
+.search-btn-blue {
+  background-color: var(--secondary-blue);
+}  
+
+ */
+
+
+.hey{
+  background-color: pink;
+  width: 100%;
+  height: 100px;
+}

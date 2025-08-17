@@ -1,0 +1,99 @@
+.press-releases-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.press-releases-page h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #010101;
+  text-decoration: underline;
+}
+
+.filter-bar {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.filter-bar input {
+  padding: 8px;
+  width: 250px;
+}
+
+.filter-bar button {
+  padding: 8px 12px;
+  background-color: #f8c000;
+  border: none;
+  cursor: pointer;
+}
+
+.press-list {
+  list-style: none;
+  padding: 0;
+}
+
+.press-item {
+  display: flex;
+  align-items: flex-start;
+  border-bottom: 1px dotted #ccc;
+  padding: 15px 0;
+}
+
+.item-number {
+  font-weight: bold;
+  color: #e60073;
+  margin-right: 12px;
+  min-width: 30px;
+}
+
+.press-content {
+  flex: 1;
+}
+
+.press-title {
+  margin: 0;
+  color: #0033cc;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.press-title:hover {
+  text-decoration: underline;
+}
+
+.press-date {
+  margin: 5px 0 0 0;
+  font-size: 14px;
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+
+.calendar-icon {
+  margin-right: 6px;
+  color: #666;
+}
+
+.pagination {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.pagination button {
+  margin: 0 5px;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+}
+
+.pagination .active {
+  background-color: #0033cc;
+  color: white;
+  font-weight: bold;
+}

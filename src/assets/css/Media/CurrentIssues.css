@@ -1,0 +1,75 @@
+.issues-container {
+  padding: 30px 40px;
+  background-color: #fff;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.main-heading {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #222;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 10px;
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.result-count {
+  font-size: 18px;
+  color: #333;
+}
+
+.sort-dropdown {
+  padding: 8px 14px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #bbb;
+  cursor: pointer;
+}
+
+.issue-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.issue-item {
+  padding: 14px 0;
+  border-bottom: 1px dashed #ccc;
+}
+
+.issue-link {
+  color: #0046c0;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.issue-link:hover {
+  text-decoration: underline;
+}
+
+.issue-index {
+  color: #c40000;
+  font-weight: bold;
+  margin-right: 6px;
+}
+
+.issue-date {
+  margin-top: 4px;
+  color: #444;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.calendar-icon {
+  margin-right: 6px;
+  color: #888;
+}

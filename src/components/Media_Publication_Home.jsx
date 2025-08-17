@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Header from "../components/Header";
 import Banner from "../components/Banner";
 import MediaAndPublications from "../components/MediaAndPublications";
-import "../components/SocialMediaSection.css";
+import "../assets/css/Media/SocialMediaSection.css";
 
 const SocialMediaSection = () => {
   useEffect(() => {

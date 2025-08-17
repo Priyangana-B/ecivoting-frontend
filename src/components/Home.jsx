@@ -159,7 +159,7 @@ const Home = () => {
                   Media guidelines, press releases, election coverage regulations, 
                   and communication with media during election periods.
                 </p>
-                <a href="/media-management" className="service-link">
+                <a href="/Media_Publication_Home" className="service-link">
                   Learn More →
                 </a>
               </div>
