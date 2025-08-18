@@ -389,28 +389,7 @@ body {
 }
 
 /* Footer */
-.footer {
-  background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
-  color: white;
-  text-align: center;
-  padding: var(--spacing-xl);
-  margin-top: var(--spacing-xl);
-}
 
-.footer-content p {
-  margin: 0.5rem 0;
-  opacity: 0.9;
-}
-
-.footer-content p:first-child {
-  font-weight: 600;
-  font-size: 1.1rem;
-}
-
-.footer-content p:last-child {
-  color: #d1d5db;
-  font-style: italic;
-}
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -512,7 +491,7 @@ body {
 
 /* Print Styles */
 @media print {
-  .header, .footer, .captcha-section, .submit-btn {
+  .header,  .captcha-section, .submit-btn {
     display: none;
   }
   

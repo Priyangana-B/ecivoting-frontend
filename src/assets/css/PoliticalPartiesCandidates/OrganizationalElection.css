@@ -1,0 +1,36 @@
+.organizational-election {
+  min-height: 100vh;
+  background: #F8F8F8; /* light gray background */
+}
+
+.info-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 30px;
+}
+
+.info-card {
+  background: #E5E0D8; /* light beige card */
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(116, 136, 115, 0.2); /* greenish shadow */
+  border: 1px solid #D1A980; /* golden border */
+}
+
+.info-card h3 {
+  color: #748873; /* greenish heading */
+  font-size: 20px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #D1A980; /* golden underline */
+  padding-bottom: 10px;
+}
+
+.info-card ul {
+  padding-left: 20px;
+}
+
+.info-card li {
+  color: #555; /* dark grey for readability */
+  margin-bottom: 10px;
+  line-height: 1.5;
+}

@@ -266,22 +266,7 @@ const DeleteApplication = () => {
   return (
     <div className="delete-page">
       {/* Header */}
-      <header className="header">
-        <div className="header-content">
-          <h1 className="portal-title">Electors Portal</h1>
-          <nav aria-label="Main navigation">
-            <ul className="nav-links">
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/register">Register</Link></li>
-              <li><Link to="/download-epic">Download E-EPIC</Link></li>
-              <li><Link to="/search-electoral-roll">Search</Link></li>
-              <li><Link to="/update-details">Update Details</Link></li>
-              <li><Link to="/about">About</Link></li>
-              <li><Link to="/contact">Contact</Link></li>
-            </ul>
-          </nav>
-        </div>
-      </header>
+      
 
       {/* Main Content */}
       <main className="main-content">
@@ -470,12 +455,7 @@ const DeleteApplication = () => {
       </main>
 
       {/* Footer */}
-      <footer className="footer">
-        <div className="footer-content">
-          <p>&copy; 2025 Electors Portal. All rights reserved.</p>
-          <p>Designed with commitment to democratic participation.</p>
-        </div>
-      </footer>
+    
     </div>
   );
 };

@@ -1,0 +1,158 @@
+.top-header {
+  width: 100%;
+  font-family: "Arial", sans-serif;
+}
+
+/* Top mini bar */
+.top-bar {
+  display: flex;                 /* horizontal layout */
+  justify-content: space-between;
+  align-items: center;           /* vertical center */
+  background-color: #748873;     /* Sage Green */
+  color: white;
+  padding: 10px 20px;
+  font-size: 14px;
+}
+
+.top-bar a {
+  color: white;
+  text-decoration: none;
+  margin-left: 15px;
+}
+
+.top-bar a:hover {
+  text-decoration: underline;
+}
+
+.font-button,
+.lang-button {
+  margin-left: 10px;
+  padding: 2px 8px;
+  font-size: 12px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  background-color: #e5e0d8; /* Light Gray */
+  color: #333;
+}
+
+/* Left section (Menu + Toll Free) */
+.left-icons {
+  display: flex;           /* put menu and toll free in one row */
+  align-items: center;     /* vertical align */
+  gap: 20px;               /* space between menu and toll text */
+}
+
+.menu-section {
+  display: flex;           /* icon and text in same row */
+  align-items: center;
+  gap: 8px;                /* space between icon and text */
+}
+
+.menu-icon {
+  font-size: 22px;
+}
+
+.menu-text {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.toll-text {
+  font-size: 16px;
+}
+
+/* Logo & title area */
+.logo-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f8f8f8; /* White */
+  padding: 10px 20px;
+}
+
+.logo-text {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.flag {
+  width: 60px;
+  height: auto;
+}
+
+.hindi-text {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
+.eng-text {
+  font-size: 16px;
+  font-weight: 400;
+  color: #555;
+}
+
+.top-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  padding: 8px 12px;
+  font-size: 13px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.btn.gold {
+  background-color: #d1a980;
+  color: white;
+}
+
+.btn.blue {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.wide-btn {
+  background-color: #d1a980;  /* beige (same as gold) */
+  color: white;
+  width: 260px;              /* approximate combined width */
+  padding: 8px 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  text-align: center;
+}
+.wide-btn:hover {
+  background-color: #c6986e; /* slightly darker on hover */
+}
+.date-time {
+  font-size: 14px;
+  font-weight: bold;
+  color: #222; /* darker grey for text */
+  background: #f0f0f0; /* light grey background */
+  padding: 8px 14px;
+  border-radius: 6px; /* subtle rounded edges */
+  border: 1px solid #d1d1d1; /* softer border */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08); /* subtle depth */
+  font-family: 'Segoe UI', sans-serif;
+  letter-spacing: 0.5px;
+  display: inline-block;
+  min-width: 240px; /* ensures it doesn’t shrink too much */
+  text-align: center; /* center-align text */
+  transition: all 0.3s ease;
+}
+
+.date-time:hover {
+  background: #e4e4e4; /* slightly darker on hover */
+  border-color: #c1c1c1;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+  transform: scale(1.02);
+}

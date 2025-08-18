@@ -492,26 +492,7 @@ body {
 }
 
 /* Footer */
-.footer {
-  background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
-  color: white;
-  text-align: center;
-  padding: var(--spacing-xl);
-  margin-top: var(--spacing-xl);
-  position: relative;
-}
 
-.footer::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--primary-color), var(--warning-color), var(--primary-color));
-  background-size: 200% 100%;
-  animation: gradientShift 3s ease-in-out infinite;
-}
 
 @keyframes gradientShift {
   0%, 100% { background-position: 0% 50%; }

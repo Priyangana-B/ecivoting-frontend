@@ -1,0 +1,34 @@
+.guidelines {
+  min-height: 100vh;
+  background: #F8F8F8; /* light gray */
+}
+
+.guidelines-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.guideline-card {
+  background: #E5E0D8; /* light beige */
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(116, 136, 115, 0.2); /* greenish shadow */
+  border-left: 4px solid #D1A980; /* golden left border */
+}
+
+.guideline-card h3 {
+  color: #748873; /* greenish heading */
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.guideline-card ul {
+  padding-left: 20px;
+}
+
+.guideline-card li {
+  color: #555; /* darker gray for contrast */
+  margin-bottom: 12px;
+  line-height: 1.5;
+}

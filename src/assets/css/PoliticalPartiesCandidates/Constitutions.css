@@ -1,0 +1,155 @@
+/* ===========================
+   Color Variables 
+=========================== */
+:root {
+  --greenish: #748873;
+  --golden: #D1A980;
+  --beige: #E5E0D8;
+  --gray: #F8F8F8;
+
+  --bg-light: var(--beige);
+  --text-dark: var(--greenish);
+  --button-color: #A87340;     /* Golden-brown tone */
+  --button-hover: var(--golden);
+  --hover-bg: var(--gray);
+}
+
+/* ===========================
+   Page Wrapper 
+=========================== */
+.constitutions {
+  min-height: 100vh;
+  background: var(--gray);
+  padding: 40px 0;
+}
+
+/* ===========================
+   Grid Layout 
+=========================== */
+.parties-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 40px;
+}
+
+/* ===========================
+   Section Headings 
+=========================== */
+.party-category h2 {
+  color: var(--text-dark);
+  font-size: 24px;
+  margin-bottom: 25px;
+  text-align: center;
+  padding: 15px;
+  background-color: var(--bg-light);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ===========================
+   Party List Container 
+=========================== */
+.party-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ===========================
+   Party Card 
+=========================== */
+.party-item {
+  background-color: var(--bg-light);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.party-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ===========================
+   Left Section (emoji + text)
+=========================== */
+.party-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.party-emoji {
+  font-size: 2rem;
+}
+
+.party-text h3 {
+  color: var(--text-dark);
+  font-size: 18px;
+  margin: 0;
+  font-weight: 600;
+}
+
+.party-symbol {
+  font-size: 14px;
+  color: #555;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+/* ===========================
+   Button 
+=========================== */
+.party-item .btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  font-size: 14px;
+  background-color: var(--button-color);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.party-item .btn::before {
+  content: "📄";
+  font-size: 1rem;
+}
+
+.party-item .btn:hover {
+  background-color: var(--button-hover);
+  color: var(--text-dark);
+}
+
+/* ===========================
+   Responsive 
+=========================== */
+@media (max-width: 768px) {
+  .parties-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .party-item {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .party-left {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .party-item .btn {
+    width: 70%;
+    justify-content: center;
+  }
+}

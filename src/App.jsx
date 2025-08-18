@@ -1,5 +1,11 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+
+import Header from "./head_foot_nav/Header";
+import Footer from "./head_foot_nav/Footer";
+
+
 import Home from './components/Home';
 import Electors_Home from './components/Electors_Home';
 import Register from './components/Register';
@@ -9,7 +15,7 @@ import UpdateDetails from './components/UpdateDetails';
 import DeleteApplication from './components/DeleteApplication';
 
 
-import Navbar from "./components/Navbar";
+
 import Media_Publication_Home from "./components/Media_Publication_Home";
 import MediaAndPublications from './components/MediaAndPublications';
 import Media from "./components/Media";
@@ -22,13 +28,35 @@ import BulletinList from "./components/BulletinList";
 import PressReleaseDetail from "./components/PressReleaseDetail";
 
 
+import Political_Parties_Candidates_Home from './components/Political_Parties_Candidates_Home';
+import PoliticalPartyRegistration from "./components/PoliticalPartyRegistration";
+import PPRTMS from "./components/PPRTMS";
+import PoliticalPartiesSymbol from "./components/PoliticalPartiesSymbol";
+import Constitutions from "./components/Constitutions";
+import OrganizationalElection from "./components/OrganizationalElection";
+import Guidelines from "./components/Guidelines";
+import ApplicationForm from "./components/ApplicationForm";
+import Candidates from "./components/Candidates";
+import ComplaintForm from "./components/ComplaintForm";
+import SampleConstitution from "./components/SampleConstitution"; 
+import MegaMenu from "./head_foot_nav/MegaMenu";
+
+
 // Import other components...
 
+
+
+
 function App() {
+  const [menuOpen, setMenuOpen] = useState(false);
   return (
     <Router>
+   
       <div className="App">
-        <Navbar />
+      <Header onMenuOpen={() => setMenuOpen(true)} />
+        {menuOpen && <MegaMenu onClose={() => setMenuOpen(false)} />}
+
+       
         
         {/* Define routes for the application */}
         <Routes>
@@ -52,11 +80,27 @@ function App() {
         <Route path="/media/video" element={<VideoGallery />} />
         <Route path="/media/bulletins" element={<BulletinList />} />
         <Route path="/media/press-releases/:id" element={<PressReleaseDetail />} />
+
+
+          {/* Political Parties and Candidates */}
+          <Route path="/Political_Parties_Candidates_Home" element={<Political_Parties_Candidates_Home />} />
+          <Route path="/political-party-registration" element={<PoliticalPartyRegistration />} />
+          <Route path="/pprtms" element={<PPRTMS />} />
+          <Route path="/political-parties-symbol" element={<PoliticalPartiesSymbol />} />
+          <Route path="/constitutions" element={<Constitutions />} />
+          <Route path="/organizational-election" element={<OrganizationalElection />} />
+          <Route path="/guidelines" element={<Guidelines />} />
+          <Route path="/application-form" element={<ApplicationForm />} />
+          <Route path="/candidates" element={<Candidates />} />
+          <Route path="/complaint-form" element={<ComplaintForm />} />
+          <Route path="/sample-constitution" element={<SampleConstitution />} /> 
+          {/* Add other routes for Political Parties and Candidates as needed */}
           
           
          
           {/* Add other routes */}
         </Routes>
+         <Footer />
       </div>
     </Router>
   );

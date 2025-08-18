@@ -1,0 +1,114 @@
+.mega-menu-overlay {
+    position: fixed;
+    top: 40px; /* height of your top green bar */
+    left: 0;
+    width: 100%;
+    height: calc(100% - 40px);
+    background-color: #4d5257e3;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 40px; /* remove the gap */
+    box-sizing: border-box;
+    overflow-y: auto;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.close-button {
+    position: absolute;
+    top: 25px;
+    right: 40px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.mega-menu-content {
+    width: 90%;
+    max-width: 1400px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4-column grid */
+    gap: 20px 40px;
+    color: white;
+}
+
+.menu-column {
+    padding: 10px;
+}
+
+.menu-column h3 {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffc107; /* Yellow heading color from screenshot */
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.menu-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.voters-section ul,
+.election-mgmt-section ul {
+    column-count: 2;
+    column-gap: 30px;
+}
+
+.menu-column li {
+    margin-bottom: 10px;
+}
+
+.menu-column a {
+    color: #ffffff; /* White links */
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.menu-column a:hover {
+    color: #cde6ff; /* Light blue hover */
+    text-decoration: underline;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 1200px) {
+    .mega-menu-content {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .voters-section,
+    .election-mgmt-section {
+        grid-column: span 3;
+    }
+}
+
+@media (max-width: 768px) {
+    .mega-menu-content {
+        grid-template-columns: 1fr;
+        width: 95%;
+    }
+    .voters-section,
+    .election-mgmt-section {
+        grid-column: span 1;
+    }
+    .voters-section ul,
+    .election-mgmt-section ul {
+        column-count: 1;
+    }
+    .close-button {
+        top: 20px;
+        right: 20px;
+    }
+}

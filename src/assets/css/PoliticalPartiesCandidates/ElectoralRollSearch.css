@@ -1,0 +1,124 @@
+/* .electoral-roll-search {
+  min-height: 100vh;
+  background: #E5E0D8; 
+}
+
+.search-header {
+  background: linear-gradient(135deg, #748873 0%, #D1A980 100%); 
+  color: #F8F8F8;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.search-header h1 {
+  font-size: 36px;
+  font-weight: 700;
+  margin: 0;
+}
+  .search-form-container {
+    max-width: 1000px;
+    margin: -20px auto 40px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .search-form {
+    padding: 40px;
+  }
+  
+  .form-section {
+    margin-bottom: 40px;
+  }
+  
+  .form-section h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 30px;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e5e7eb;
+  }
+  
+  .captcha-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 30px 0;
+    justify-content: center;
+  }
+  
+  .captcha-box {
+    background: #f3f4f6;
+    padding: 15px 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 2px solid #e5e7eb;
+  }
+  
+  .captcha-text {
+    font-size: 20px;
+    font-weight: 600;
+    color: #6366f1;
+    letter-spacing: 2px;
+  }
+  
+  .captcha-refresh {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .captcha-refresh:hover {
+    background: #e5e7eb;
+  }
+  
+  .captcha-input {
+    max-width: 200px;
+  }
+  
+  .form-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+  }
+  
+  .form-actions .btn {
+    min-width: 120px;
+    font-size: 18px;
+    padding: 15px 30px;
+  }
+  
+  @media (max-width: 768px) {
+    .search-form {
+      padding: 20px;
+    }
+  
+    .search-header h1 {
+      font-size: 28px;
+    }
+  
+    .captcha-section {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  
+    .captcha-input {
+      max-width: none;
+    }
+  
+    .form-actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+   */

@@ -1,0 +1,157 @@
+.pprtms {
+  min-height: 100vh;
+  background: #f8f8f8;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.tracking-card {
+  background: #e5e0d8;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(116, 136, 115, 0.15);
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.tracking-card h2 {
+  color: #748873;
+  margin-bottom: 30px;
+}
+
+.tracking-form .form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.tracking-form .form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.tracking-form .btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: #748873;
+  color: white;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.tracking-form .btn:hover {
+  background: #5f6f5c;
+}
+
+.error-box {
+  margin-top: 20px;
+  padding: 15px;
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  border-radius: 8px;
+}
+
+/* APPLICATION DETAILS */
+.application-details-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  margin-top: 20px;
+  box-shadow: 0 4px 10px rgba(116, 92, 59, 0.2);
+  text-align: left;
+}
+
+.application-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(90deg, #748873, #b08865);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.status-icon {
+  font-size: 20px;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px 40px;
+  margin-bottom: 20px;
+}
+
+.details-grid label {
+  display: block;
+  font-weight: 600;
+  color: #555;
+}
+
+.details-grid span {
+  display: block;
+  font-weight: 500;
+  color: #333;
+}
+
+.highlight {
+  font-weight: bold;
+  color: #2a5d34;
+}
+
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.status-badge.green {
+  background: #2a5d34;
+  color: white;
+}
+
+.status-badge.yellow {
+  background: #fbc02d;
+  color: black;
+}
+
+.link {
+  color: #0066cc;
+  cursor: pointer;
+}
+
+.button-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.button-row .btn {
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: background 0.3s ease;
+}
+
+.download {
+  background: #0066cc;
+  color: white;
+}
+
+.refresh {
+  background: #2a5d34;
+  color: white;
+}
+
+.button-row .btn:hover {
+  opacity: 0.9;
+}

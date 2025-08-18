@@ -100,7 +100,9 @@ body {
 
 /* Main Container */
 .main-container {
-    display: grid;
+    display:flex;
+    flex-direction: column;
+    width: 100%;
     grid-template-columns: 1fr 2fr;
     gap: 3rem;
     margin-bottom: 4rem;
@@ -119,7 +121,7 @@ body {
 
 .image-box-img {
     width: 100%;
-    max-width: 280px;
+    max-width: 730px;
     height: 200px;
     object-fit: cover;
     border-radius: 12px;
@@ -351,29 +353,7 @@ body {
     box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
 }
 
-/* Footer */
-.footer {
-    background: rgba(44, 62, 80, 0.95);
-    color: white;
-    text-align: center;
-    padding: 2rem;
-    margin-top: 3rem;
-    backdrop-filter: blur(10px);
-}
 
-.footer-content p {
-    margin: 0.5rem 0;
-}
-
-.footer-content p:first-child {
-    font-weight: 600;
-    font-size: 1.1rem;
-}
-
-.footer-content p:last-child {
-    color: #bdc3c7;
-    font-style: italic;
-}
 
 /* Responsive Design */
 @media (max-width: 768px) {

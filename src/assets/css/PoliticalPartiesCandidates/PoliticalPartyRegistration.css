@@ -1,0 +1,240 @@
+body {
+  background: #F8F8F8;
+  font-family: 'Segoe UI', sans-serif;
+  color: #748873;
+  margin: 0;
+  padding: 0;
+}
+
+/* Page Sections */
+.organizational-election,
+.guidelines,
+.political-party-registration {
+  min-height: 100vh;
+  background: #F8F8F8;
+}
+
+/* Info Cards (used in multiple sections) */
+.info-cards,
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.info-card {
+  background: #E5E0D8;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(116, 136, 115, 0.2);
+}
+
+.info-card h3 {
+  color: #748873;
+  font-size: 20px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #D1A980;
+  padding-bottom: 10px;
+  font-weight: 600;
+}
+
+.info-card li {
+  color: #748873;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+/* Guidelines Section Cards */
+.guidelines-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.guideline-card {
+  background: #E5E0D8;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(116, 136, 115, 0.2);
+  border-left: 4px solid #D1A980;
+}
+
+.guideline-card h3 {
+  color: #748873;
+  font-size: 20px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.guideline-card li {
+  color: #748873;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+/* Lists (Political Party Registration) */
+.guidelines-list,
+.new-parties-list {
+  background: #E5E0D8;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(116, 136, 115, 0.15);
+  overflow: hidden;
+}
+
+/* Each Item */
+.guideline-item,
+.party-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #D1A980;
+  transition: background-color 0.3s ease;
+}
+
+.guideline-item:last-child,
+.party-item:last-child {
+  border-bottom: none;
+}
+
+.guideline-item:hover,
+.party-item:hover {
+  background: #F8F8F8;
+}
+
+.guideline-content h3,
+.party-content h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #748873;
+  margin-bottom: 8px;
+}
+
+.guideline-date,
+.party-date {
+  font-size: 14px;
+  color: #748873;
+}
+
+/* Expanded Info List */
+.guideline-info,
+.party-info {
+  margin-top: 10px;
+  padding-left: 20px;
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.guideline-info li,
+.party-info li {
+  list-style-type: disc;
+  margin-bottom: 6px;
+}
+
+/* Expand Button */
+.expand-btn {
+  background: #D1A980;
+  color: white;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  /* Center the plus sign */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  padding: 0;
+
+}
+
+.expand-btn:hover {
+  background: #B08865;
+  transform: scale(1.1);
+}
+
+/* Registration Info Wrapper */
+.registration-info {
+  margin: 40px 0;
+}
+
+/* Download Section */
+.download-section {
+  margin: 40px 0;
+}
+
+.download-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.download-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #E5E0D8;
+  padding: 20px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 4px 6px rgba(116, 136, 115, 0.15);
+  transition: all 0.3s ease;
+}
+
+.download-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(116, 136, 115, 0.2);
+}
+
+.download-icon {
+  font-size: 32px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #F8F8F8;
+  border-radius: 10px;
+}
+
+.download-content h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #748873;
+  margin-bottom: 5px;
+}
+
+.download-content p {
+  font-size: 14px;
+  color: #748873;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .guideline-item,
+  .party-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .expand-btn {
+    align-self: flex-end;
+  }
+
+  .info-grid,
+  .download-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.new-parties-section {
+  padding-top: 30px; /* adjust as needed */
+}

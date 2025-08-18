@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Header from "../components/Header";
+import Header from "../head_foot_nav/Header";
 import Banner from "../components/Banner";
 import MediaAndPublications from "../components/MediaAndPublications";
 import "../assets/css/Media/SocialMediaSection.css";

@@ -587,12 +587,7 @@ const UpdateDetails = () => {
       </main>
 
       {/* Footer */}
-      <footer className="footer">
-        <div className="footer-content">
-          <p>&copy; 2025 Electors Portal. All rights reserved.</p>
-          <p>Designed with commitment to democratic participation.</p>
-        </div>
-      </footer>
+
     </div>
   );
 };

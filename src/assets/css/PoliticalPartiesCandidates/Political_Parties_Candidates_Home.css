@@ -1,0 +1,230 @@
+:root {
+  --primary-color: #748873;
+  --accent-color: #D1A980;
+  --bg-soft: #E5E0D8;
+  --bg-light: #F8F8F8;
+  --text-dark: #333;
+  --text-muted: #666;
+}
+
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+  color: white;
+  padding: 80px 0;
+  text-align: center;
+}
+
+.hero-content h1 {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* Tabs Section */
+.tabs-section {
+  background-color: var(--bg-light);
+  padding: 0;
+  margin-top: 1rem;
+}
+
+@media (min-width: 768px) {
+  .tabs-section {
+    margin-top: 1.5rem;
+  }
+}
+
+.tabs {
+  display: flex;
+  max-width: 600px;
+  margin: 0 auto;
+  border: 2px solid #d1a980;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  background: #fff;
+}
+
+.tab {
+  flex: 1;
+  padding: 15px 30px;
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #2563eb;
+}
+
+.tab.active {
+  background: #748873;
+  color: #fff;
+}
+
+.tab:hover:not(.active) {
+  background: #f5f5f5;
+}
+
+/* Services Section */
+.services-section {
+  padding: 60px 0;
+  background: var(--bg-light);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.service-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border-left: 5px solid;
+}
+
+.service-card.blue {
+  border-left-color: var(--primary-color);
+}
+
+.service-card.pink {
+  border-left-color: var(--accent-color);
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.service-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: var(--text-dark);
+}
+
+.service-card p {
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* Additional Sections */
+.additional-sections {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+  padding: 60px 0;
+}
+
+.additional-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+/* Additional card as clickable box */
+.additional-card {
+  display: block;                /* clickable box */
+  text-decoration: none;         /* remove underline */
+  color: inherit;                /* inherit text color */
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease, background 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effect for clickable boxes */
+.additional-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--accent-color);
+  background: #fafafa; /* subtle background fade */
+}
+
+/* Headings inside additional cards */
+.additional-card h3 {
+  background: var(--primary-color);
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Color variations for headings */
+.additional-card.blue h3 {
+  background: var(--primary-color);
+}
+.additional-card.pink h3 {
+  background: var(--accent-color);
+}
+.additional-card.center h3 {
+  background: var(--primary-color);
+}
+
+/* Text inside cards */
+.additional-card p {
+  color: var(--text-dark);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Center card special style */
+.additional-card.center {
+  grid-column: auto;
+  max-width: none;
+  margin: 0;
+}
+
+/* Bottom Services (kept for future use if uncommented) */
+.bottom-services {
+  background: white;
+  padding: 40px 0;
+}
+
+.bottom-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.bottom-card {
+  background: var(--bg-light);
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid var(--bg-soft);
+}
+
+.bottom-card h4 {
+  color: var(--text-dark);
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.bottom-card p {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 28px;
+  }
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+  .tabs {
+    flex-direction: column;
+  }
+}
