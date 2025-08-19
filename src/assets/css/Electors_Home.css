@@ -13,68 +13,7 @@ body {
     min-height: 100vh;
 }
 
-/* Header Styles */
-.header {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    border-bottom: 3px solid #3498db;
-}
 
-.header-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.portal-title {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #2c3e50;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: #2c3e50;
-    font-weight: 500;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    position: relative;
-}
-
-.nav-links a::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: #3498db;
-    transition: width 0.3s ease;
-}
-
-.nav-links a:hover::before {
-    width: 100%;
-}
-
-.nav-links a:hover {
-    color: #3498db;
-    transform: translateY(-2px);
-}
 
 /* Main Content */
 .main-content {
@@ -88,12 +27,13 @@ body {
     margin-bottom: 3rem;
     border-radius: 16px;
     overflow: hidden;
+
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .banner-image {
-    width: 100%;
-    height: 200px;
+    width: 700vw;
+    height: 400px;
     object-fit: cover;
     display: block;
 }

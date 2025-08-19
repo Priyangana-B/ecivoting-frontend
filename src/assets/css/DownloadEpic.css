@@ -32,54 +32,7 @@ body {
   min-height: 100vh;
 }
 
-/* Header */
-.header {
-  background: var(--glass-bg);
-  backdrop-filter: blur(20px);
-  box-shadow: var(--shadow);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  border-bottom: 1px solid var(--border-light);
-}
 
-.header-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: var(--spacing-lg) var(--spacing-xl);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.portal-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--primary-color);
-}
-
-.nav-links {
-  display: flex;
-  list-style: none;
-  gap: var(--spacing);
-  background: rgba(255, 255, 255, 0.1);
-  padding: 0.5rem;
-  border-radius: var(--radius-lg);
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: #374151;
-  font-weight: 600;
-  padding: 0.75rem var(--spacing-lg);
-  border-radius: var(--radius);
-  transition: all var(--transition);
-}
-
-.nav-links a:hover {
-  color: var(--primary-color);
-  background: rgba(37, 99, 235, 0.1);
-}
 
 /* Main Content */
 .main-content {

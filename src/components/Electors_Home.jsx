@@ -14,26 +14,15 @@ const Electors_Home = () => {
 
   return (
     <div>
-      {/* Header Section */}
-      <header className="header">
-        <div className="header-content">
-          <h1 className="portal-title">Electors Portal</h1>
-          <nav aria-label="Main navigation">
-            <ul className="nav-links">
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/about">About</Link></li>
-              <li><Link to="/contact">Contact</Link></li>
-            </ul>
-          </nav>
-        </div>
-      </header>
+      
+      
 
       {/* Main Content Area */}
       <main className="main-content">
         {/* Banner Image Section */}
         <section className="banner">
           <img 
-            src="https://placehold.co/1200x200/3498db/ffffff?text=Electoral+Services+Portal" 
+            src="https://www.euroschoolindia.com/blogs/wp-content/uploads/2024/05/lok-sabha-election.webp" 
             alt="Electoral Services Banner" 
             className="banner-image"
             onError={handleImageError}
@@ -44,7 +33,7 @@ const Electors_Home = () => {
         <section className="main-container">
           <div className="image-box">
             <img 
-              src="https://placehold.co/280x200/e8f4f8/3498db?text=Voting+Concept" 
+              src="https://asiasociety.org/sites/default/files/styles/1200w/public/I/india_election.jpg" 
               alt="Illustration of voting concept showing diverse people placing ballots into a voting box" 
               className="image-box-img"
               onError={handleImageBoxError}
@@ -56,28 +45,28 @@ const Electors_Home = () => {
             <h2 className="services-heading">Services</h2>
             <ul className="options-list">
               <li className="option-item">
-                <Link to="/register">
+                <Link to="/Register">
                   <span className="option-text">Register in Electoral Roll</span>
                   <span className="option-arrow">→</span>
                 </Link>
               </li>
               
               <li className="option-item">
-                <Link to="/download-epic">
+                <Link to="/DownloadEpic">
                   <span className="option-text">Download E-EPIC</span>
                   <span className="option-arrow">→</span>
                 </Link>
               </li>
               
               <li className="option-item">
-                <Link to="/update-details">
+                <Link to="/UpdateDetails">
                   <span className="option-text">Update your details</span>
                   <span className="option-arrow">→</span>
                 </Link>
               </li>
               
               <li className="option-item">
-                <Link to="/search-electoral-roll">
+                <Link to="/SearchElectoralRoll">
                   <span className="option-text">Search Electoral Roll</span>
                   <span className="option-arrow">→</span>
                 </Link>
@@ -133,15 +122,7 @@ const Electors_Home = () => {
           </div>
 
           {/* Quick Links Section */}
-          <div className="quick-links-section">
-            <h3 className="quick-links-title">Quick Access</h3>
-            <div className="quick-links-list">
-              <Link to="/election-schedule" className="quick-link">Election Schedule</Link>
-              <Link to="/voter-guidelines" className="quick-link">Voter Guidelines</Link>
-              <Link to="/status-check" className="quick-link">Check Status</Link>
-              <Link to="/support" className="quick-link">Support</Link>
-            </div>
-          </div>
+         
         </section>
       </main>
 

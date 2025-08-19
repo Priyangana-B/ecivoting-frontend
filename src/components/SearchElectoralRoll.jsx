@@ -211,18 +211,7 @@ const SearchElectoralRoll = () => {
     
       <div className="search-page">
         {/* Header */}
-        <header className="header">
-          <div className="header-content">
-            <h1 className="portal-title">Electors Portal</h1>
-            <nav aria-label="Main navigation">
-              <ul className="nav-links">
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/about">About</Link></li>
-                <li><Link to="/contact">Contact</Link></li>
-              </ul>
-            </nav>
-          </div>
-        </header>
+   
 
         {/* Main Content */}
         <main className="main-content">
@@ -456,13 +445,7 @@ const SearchElectoralRoll = () => {
           </div>
         </main>
 
-        {/* Footer */}
-        <footer className="footer">
-          <div className="footer-content">
-            <p>&copy; 2025 Electors Portal. All rights reserved.</p>
-            <p>Designed with commitment to democratic participation.</p>
-          </div>
-        </footer>
+      
       </div>
     </>
   );

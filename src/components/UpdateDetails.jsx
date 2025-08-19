@@ -259,22 +259,7 @@ const UpdateDetails = () => {
 
   return (
     <div className="update-page">
-      {/* Header */}
-      <header className="header">
-        <div className="header-content">
-          <h1 className="portal-title">Electors Portal</h1>
-          <nav aria-label="Main navigation">
-            <ul className="nav-links">
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/register">Register</Link></li>
-              <li><Link to="/download-epic">Download E-EPIC</Link></li>
-              <li><Link to="/search-electoral-roll">Search</Link></li>
-              <li><Link to="/about">About</Link></li>
-              <li><Link to="/contact">Contact</Link></li>
-            </ul>
-          </nav>
-        </div>
-      </header>
+      
 
       {/* Main Content */}
       <main className="main-content">
