@@ -83,7 +83,7 @@ export default function Home() {
           </div>
           <div className="icon-box">
             <img src={educationIcon} alt="Voter Education" />
-            <a href="/Voter_Education"><p>Voter Education</p></a>
+            <a href="/VoterEducation_Home"><p>Voter Education</p></a>
           </div>
         </div>
       </div>

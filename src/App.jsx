@@ -42,6 +42,19 @@ import SampleConstitution from "./components/SampleConstitution";
 import MegaMenu from "./head_foot_nav/MegaMenu";
 
 
+
+
+import VoterEducation_Home from './components/VoterEducation_Home';
+import WhyVotingMatters from "./components/WhyVotingMatters";
+import HowToRegister from "./components/HowToRegister";
+import KnowYourCandidate from "./components/KnowYourCandidate";
+import VotingProcess from "./components/VotingProcess";
+import ElectionDates from "./components/ElectionDates";
+import YouthCorner from "./components/YouthCorner";
+import RegisterToVote from "./components/RegisterToVote";
+import HowToVote from "./components/HowToVote";
+import FindPollingBooth from "./components/FindPollingBooth";
+
 // Import other components...
 
 
@@ -96,6 +109,20 @@ function App() {
           <Route path="/sample-constitution" element={<SampleConstitution />} /> 
           {/* Add other routes for Political Parties and Candidates as needed */}
           
+
+
+          {/* Voter Education */}
+           <Route path="/VoterEducation_Home" element={<VoterEducation_Home />} /> 
+        <Route path="/WhyVotingMatters" element={<WhyVotingMatters />} />
+        <Route path="/HowToRegister" element={<HowToRegister />} />
+        <Route path="/KnowYourCandidate" element={<KnowYourCandidate />} />
+        <Route path="/VotingProcess" element={<VotingProcess />} />
+        <Route path="/ElectionDates" element={<ElectionDates />} />
+        <Route path="/YouthCorner" element={<YouthCorner />} />
+
+        <Route path="/RegisterToVote" element={<RegisterToVote />} />
+        <Route path="/HowToVote" element={<HowToVote />} />
+        <Route path="/FindPollingBooth" element={<FindPollingBooth />} />
           
          
           {/* Add other routes */}

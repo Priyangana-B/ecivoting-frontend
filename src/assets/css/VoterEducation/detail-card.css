@@ -1,0 +1,111 @@
+/* Global note: page is already using Roboto per your setup */
+
+.detail-wrapper {
+  width: 100%;
+  max-width: 960px;
+  margin: 24px auto 56px;
+  padding: 0 16px;
+}
+
+.status-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0,0,0,0.06);
+  overflow: hidden;
+}
+
+/* Header ribbon (green → tan gradient to reflect your palette) */
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  background: linear-gradient(90deg, #748873, #d1a980);
+  color: #fff;
+}
+
+.header-badge {
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  font-weight: 700;
+}
+
+.header-texts h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.header-subtitle {
+  margin: 2px 0 0;
+  opacity: 0.95;
+  font-size: 13.5px;
+}
+
+/* Content sections */
+.card-content {
+  padding: 18px 20px 8px;
+}
+
+.content-section {
+  padding: 18px 6px 18px 6px;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.08);
+}
+
+.content-section:last-child {
+  border-bottom: none;
+}
+
+/* Heading with accent bar */
+.content-section h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #2d3a2c;
+  position: relative;
+  padding-bottom: 6px;
+}
+
+.content-section h3::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  width: 56px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #748873, #e5e0d8, #d1a980);
+}
+
+.content-section p,
+.content-section li {
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: #2f2f2f;
+}
+
+.bullet-list {
+  margin: 0;
+  padding-left: 18px;
+}
+
+/* Subtle card footer spacing on small screens */
+@media (max-width: 640px) {
+  .header-texts h2 {
+    font-size: 18px;
+  }
+  .content-section h3 {
+    font-size: 17px;
+  }
+  .content-section p, .content-section li {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+}

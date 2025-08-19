@@ -1,0 +1,60 @@
+.vote-dashboard {
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+  border-radius: 20 px;
+  background-color: antiquewhite   ;
+}
+
+.vote-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+}
+
+.vote-card {
+  background: #748873;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.vote-card:hover {
+  transform: scale(1.02);
+}
+
+.vote-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.party-logo {
+  font-size: 1.8rem;
+}
+
+.votes {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+.progress-bar {
+  background: #f0f0f0;
+  border-radius: 8px;
+  height: 10px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  transition: width 0.5s ease;
+}
+
+.percentage {
+  margin-top: 5px;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
