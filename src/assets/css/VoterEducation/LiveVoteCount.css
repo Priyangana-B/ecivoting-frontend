@@ -1,9 +1,9 @@
 .vote-dashboard {
   text-align: center;
-  padding: 20px;
+  padding: 20px ;
   width: 100%;
   border-radius: 20 px;
-  background-color: antiquewhite   ;
+  background-color: #f8f0df;
 }
 
 .vote-cards {
@@ -45,7 +45,7 @@
   background: #f0f0f0;
   border-radius: 8px;
   height: 10px;
-  overflow: hidden;
+ 
 }
 
 .progress {

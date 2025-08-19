@@ -1,0 +1,483 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: #f5f5f5;    
+    min-height: 100vh;  
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.voting-container {
+    background: white;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.header p {
+    color: #666;
+    font-size: 16px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+    background: #f9f9f9;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+select:focus {
+    outline: none;
+    border-color: #667eea;
+    background: white;
+}
+
+select {
+    cursor: pointer;
+}
+
+select:disabled {
+    background: #e9ecef;
+    color: #6c757d;
+    cursor: not-allowed;
+}
+
+.error {
+    color: #e74c3c;
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+}
+
+.captcha-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.captcha-box {
+    background: #f0f0f0;
+    padding: 15px 20px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    color: #333;
+    text-align: center;
+    min-width: 120px;
+    user-select: none;
+}
+
+.refresh-btn {
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 12px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease;
+}
+
+.refresh-btn:hover {
+    background: #5a6fd8;
+}
+
+.captcha-input {
+    flex: 1;
+}
+
+.submit-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+}
+
+.submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.success-message {
+    background: #d4edda;
+    color: #155724;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+    text-align: center;
+    display: none;
+}
+
+.terms {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+    margin-top: 15px;
+}
+
+/* Location Filter Page Styles */
+.location-filter {
+    display: none;
+    max-width: 600px;
+}
+
+.location-info {
+    background: #e3f2fd;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    border-left: 4px solid #2196f3;
+}
+
+.location-info h3 {
+    color: #1976d2;
+    margin-bottom: 10px;
+}
+
+.location-info p {
+    color: #424242;
+    margin: 5px 0;
+}
+
+.filter-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.filter-full {
+    grid-column: 1 / -1;
+}
+
+/* Voting Page Styles */
+.voting-page {
+    display: none;
+    max-width: 700px;
+}
+
+.voter-info {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    border-left: 4px solid #667eea;
+}
+
+.voter-info h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.voter-info p {
+    color: #666;
+    margin: 5px 0;
+}
+
+.constituency-info {
+    background: #fff3cd;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    border-left: 4px solid #ffc107;
+}
+
+.constituency-info h3 {
+    color: #856404;
+    margin-bottom: 10px;
+}
+
+.constituency-info p {
+    color: #856404;
+    margin: 5px 0;
+}
+
+.candidates-container {
+    margin-bottom: 30px;
+}
+
+.candidate-card {
+    background: #f9f9f9;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.candidate-card:hover {
+    border-color: #667eea;
+    background: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.candidate-card.selected {
+    border-color: #667eea;
+    background: linear-gradient(135deg, #667eea10, #764ba210);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+}
+
+.candidate-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.candidate-photo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.candidate-info h4 {
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.candidate-info p {
+    color: #666;
+    font-size: 14px;
+}
+
+.candidate-details {
+    color: #555;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.vote-radio {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 20px;
+    height: 20px;
+    accent-color: #667eea;
+}
+
+.vote-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+}
+
+.back-btn {
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.back-btn:hover {
+    background: #5a6268;
+}
+
+.cast-vote-btn {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    flex: 1;
+}
+
+.cast-vote-btn:hover {
+    transform: translateY(-2px);
+}
+
+.cast-vote-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.vote-success {
+    display: none;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.vote-success h2 {
+    color: #28a745;
+    margin-bottom: 15px;
+}
+
+.vote-success p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.vote-receipt {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #28a745;
+    margin-top: 20px;
+    text-align: left;
+}
+
+/* Final Success Page Styles */
+.final-success {
+    display: none;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.final-success h2 {
+    color: #28a745;
+    margin-bottom: 15px;
+    font-size: 32px;
+}
+
+.final-success p {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 18px;
+}
+
+.final-message {
+    background: #d4edda;
+    color: #155724;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.download-btn {
+    background: linear-gradient(135deg, #17a2b8, #138496);
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.download-btn:hover {
+    transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+    .voting-container {
+        padding: 25px;
+        margin: 10px;
+    }
+    
+    .captcha-container {
+        flex-direction: column;
+    }
+    
+    .captcha-box {
+        width: 100%;
+    }
+
+    .filter-row {
+        grid-template-columns: 1fr;
+    }
+
+    .candidate-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .candidate-photo {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .vote-radio {
+        position: static;
+        margin-top: 15px;
+    }
+
+    .vote-actions {
+        flex-direction: column;
+    }
+
+    .download-btn {
+        width: 100%;
+        margin: 5px 0;
+    }
+}

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../assets/css/Election_Management/Sabha_Portal.css';
 
 const RajyaSabhaPortal = () => {
+    const navigate = useNavigate();
     const [captcha, setCaptcha] = useState('');
     const [selectedState, setSelectedState] = useState('');
     const [selectedDistrict, setSelectedDistrict] = useState('');
@@ -9,6 +11,7 @@ const RajyaSabhaPortal = () => {
     const [showMembersTable, setShowMembersTable] = useState(false);
     const [successMessage, setSuccessMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const [isAuthenticating, setIsAuthenticating] = useState(false);
 
     // Sample data for members
     const membersData = {
@@ -112,35 +115,59 @@ const RajyaSabhaPortal = () => {
         // Clear previous messages
         setSuccessMessage('');
         setErrorMessage('');
+        setIsAuthenticating(true);
 
         // Validate captcha
         if (captchaInput !== captcha) {
             setErrorMessage('❌ Security code verification failed. Please try again with the correct code.');
             generateCaptcha();
             e.target.captcha.value = '';
+            setIsAuthenticating(false);
             return;
         }
 
         // Validate voter ID format
         if (data.voterId.length < 8 || !/^[A-Z]{3}[0-9]/.test(data.voterId.toUpperCase())) {
             setErrorMessage('❌ Please enter a valid Voter ID in the format ABC1234567.');
+            setIsAuthenticating(false);
             return;
         }
 
         // Validate phone number
         if (!/^[6-9][0-9]{9}$/.test(data.phone)) {
             setErrorMessage('❌ Please enter a valid 10-digit Indian mobile number.');
+            setIsAuthenticating(false);
             return;
         }
 
         // Validate name
         if (data.name.trim().length < 3) {
             setErrorMessage('❌ Please enter your full name as per Voter ID (minimum 3 characters).');
+            setIsAuthenticating(false);
             return;
         }
 
-        // Success
-        setSuccessMessage(`✅ Authentication Successful!\nWelcome ${data.name}! Your voter credentials have been verified successfully.\nYou are now authorized to proceed with the voting process.`);
+        // Success - Prepare voter data for voting app
+        const voterAuthData = {
+            voterId: data.voterId.toUpperCase(),
+            email: data.email,
+            phone: data.phone,
+            name: data.name,
+            authenticatedAt: new Date().toISOString(),
+            constituency: selectedDistrict || 'General',
+            state: selectedState || 'General'
+        };
+
+        // Store voter data in localStorage
+        localStorage.setItem('voterAuthData', JSON.stringify(voterAuthData));
+
+        setSuccessMessage(`✅ Authentication Successful!\nWelcome ${data.name}!\nRedirecting to voting portal...`);
+
+        // Navigate to voting portal after 3 seconds
+        setTimeout(() => {
+            setIsAuthenticating(false);
+            navigate('/OnlineVoting_Home');
+        }, 3000);
 
         // Reset form
         e.target.reset();
@@ -197,6 +224,9 @@ const RajyaSabhaPortal = () => {
         // Generate initial captcha
         generateCaptcha();
 
+        // Clear any existing auth data when component mounts
+        localStorage.removeItem('voterAuthData');
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -213,11 +243,10 @@ const RajyaSabhaPortal = () => {
 
     return (
         <div>
-            
             <div className="container">
                 <section className="info-banner" id="info-banner-section">
                     <h3>🔒 Secure Voting Portal</h3>
-                    <p>This is the official Election Commission of India portal for Lok Sabha elections. All voter information is encrypted and securely transmitted. Please ensure you have your valid Voter ID and registered mobile number before proceeding.</p>
+                    <p>This is the official Election Commission of India portal for Rajya Sabha elections. All voter information is encrypted and securely transmitted. Please ensure you have your valid Voter ID and registered mobile number before proceeding.</p>
                 </section>
 
                 <section className="section" id="voter-authentication">
@@ -232,6 +261,12 @@ const RajyaSabhaPortal = () => {
                             {successMessage.split('\n').slice(1).map((line, index) => (
                                 <span key={index}>{line}<br /></span>
                             ))}
+                            {isAuthenticating && (
+                                <div style={{ marginTop: '10px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                    <div className="loading-spinner"></div>
+                                    <span>Please wait while we redirect you...</span>
+                                </div>
+                            )}
                         </div>
                     )}
 
@@ -254,6 +289,7 @@ const RajyaSabhaPortal = () => {
                                 onInput={handleVoterIdInput}
                                 onFocus={handleInputFocus}
                                 onBlur={handleInputBlur}
+                                disabled={isAuthenticating}
                             />
                         </div>
 
@@ -267,6 +303,7 @@ const RajyaSabhaPortal = () => {
                                 placeholder="Enter registered email address"
                                 onFocus={handleInputFocus}
                                 onBlur={handleInputBlur}
+                                disabled={isAuthenticating}
                             />
                         </div>
 
@@ -283,6 +320,7 @@ const RajyaSabhaPortal = () => {
                                 onInput={handlePhoneInput}
                                 onFocus={handleInputFocus}
                                 onBlur={handleInputBlur}
+                                disabled={isAuthenticating}
                             />
                         </div>
 
@@ -297,13 +335,21 @@ const RajyaSabhaPortal = () => {
                                 onInput={handleNameInput}
                                 onFocus={handleInputFocus}
                                 onBlur={handleInputBlur}
+                                disabled={isAuthenticating}
                             />
                         </div>
 
                         <div className="captcha-container">
                             <div className="captcha-label">Security Code <span className="required">*</span></div>
                             <div className="captcha-display">{captcha}</div>
-                            <button type="button" className="captcha-refresh" onClick={generateCaptcha}>Refresh</button>
+                            <button 
+                                type="button" 
+                                className="captcha-refresh" 
+                                onClick={generateCaptcha}
+                                disabled={isAuthenticating}
+                            >
+                                Refresh
+                            </button>
                             <input
                                 type="text"
                                 className="captcha-input"
@@ -314,20 +360,28 @@ const RajyaSabhaPortal = () => {
                                 onInput={handleCaptchaInput}
                                 onFocus={handleInputFocus}
                                 onBlur={handleInputBlur}
+                                disabled={isAuthenticating}
                             />
                         </div>
 
-                        <button type="submit" className="login-btn">Authenticate & Proceed to Vote</button>
+                        <button 
+                            type="submit" 
+                            className="login-btn"
+                            disabled={isAuthenticating}
+                        >
+                            {isAuthenticating ? 'Authenticating...' : 'Authenticate & Proceed to Vote'}
+                        </button>
                     </form>
                 </section>
 
+                {/* Rest of your existing sections remain the same */}
                 <section className="section" id="lok-sabha-representatives">
                     <div className="section-header">
                         <div className="section-icon">🏛️</div>
-                        <h2>Bidhan Sabha Representatives</h2>
+                        <h2>Rajya Sabha Representatives</h2>
                     </div>
 
-                    <p style={{ marginBottom: "25px", color: "#666", lineHeight: "1.6" }}>Select your state and district to view the current Lok Sabha members representing your constituency.</p>
+                    <p style={{ marginBottom: "25px", color: "#666", lineHeight: "1.6" }}>Select your state and district to view the current Rajya Sabha members representing your constituency.</p>
 
                     <div className="selection-container">
                         <div className="form-group">
@@ -441,8 +495,6 @@ const RajyaSabhaPortal = () => {
                     </div>
                 </section>
             </div>
-
-           
         </div>
     );
 };

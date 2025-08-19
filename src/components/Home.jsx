@@ -1,6 +1,8 @@
 import React from "react";
 import "../assets/css/Home.css";
 
+import LiveVoteCount from "./LiveVoteDashboard";
+
 // Import icons from assets/icons
 import electorsIcon from "../assets/icons/electors.png";
 import partiesIcon from "../assets/icons/candidates.png";
@@ -87,6 +89,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <LiveVoteCount/>
     </div>
   );
 }
