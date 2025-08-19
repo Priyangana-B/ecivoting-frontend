@@ -1,22 +1,23 @@
 import React from 'react';
 import './MegaMenu.css';
 import { VscChromeClose } from 'react-icons/vsc'; // Icon for the close button
-
+import Register from "../components/Register";
 // Data for the menu links, organized by section
 const menuSections = [
   {
     title: 'VOTERS',
     links: [
-      { name: 'Register in Electoral Roll', href: '#' },
-      { name: 'Track Application Status', href: '#' },
-      { name: 'Download E-EPIC', href: '#' },
-      { name: 'Search Electoral Roll', href: '#' },
-      { name: 'Forms For Registration in Electoral Roll', href: '#' },
-      { name: 'Know Your Polling Booth', href: '#' },
-      { name: 'Service Voters', href: '#' },
-      { name: 'Overseas Voters', href: '#' },
-      { name: 'Register Complaint', href: '#' },
-      { name: 'Voter Education', href: '#' },
+      { name: 'Register in Electoral Roll', href: 'Register' },
+      // { name: 'Track Application Status', href: 'PPRTMS' },
+      { name: 'Download E-EPIC', href: 'DownloadEpic' },
+      { name: 'Search Electoral Roll', href: 'SearchElectoralRoll' },
+      // { name: 'Forms For Registration in Electoral Roll', href: '' },
+      { name: 'Update Elector Details', href: 'UpdateDetails' },
+      { name: 'Delete Elector Details', href: 'DeleteApplication' },
+      // { name: 'Service Voters', href: '#' },
+      // { name: 'Overseas Voters', href: '#' },
+      // { name: 'Register Complaint', href: '#' },
+      // { name: 'Voter Education', href: 'Voter' },
     ],
     className: 'voters-section',
   },
@@ -39,14 +40,14 @@ const menuSections = [
   {
     title: 'POLITICAL PARTIES/CANDIDATE',
     links: [
-      { name: 'Political Parties Registration', href: '#' },
-      { name: 'Election Symbol', href: '#' },
-      { name: 'Contribution Reports', href: '#' },
-      { name: 'Expenditure Report', href: '#' },
-      { name: 'Disclosure of Electoral Bonds', href: '#' },
-      { name: 'Candidate Nomination and Other Forms', href: '#' },
-      { name: 'Candidate Affidavits', href: '#' },
-      { name: 'Candidate App', href: '#' },
+      { name: 'Political Parties Registration', href: 'application-form' },
+      { name: 'Election Symbol', href: 'poltical-parties-symbol' },
+      { name: 'Constitutions', href: 'constitutions' },
+      { name: 'Track Applications', href: 'pprtms' },
+      { name: 'Organizational Elections', href: 'organizational-election' },
+      { name: 'Guidelines', href: 'guidelines' },
+      { name: 'Disputes and Merger Filings', href: 'complaint-form' },
+      // { name: 'Candidate App', href: '#' },
     ],
   },
   {
