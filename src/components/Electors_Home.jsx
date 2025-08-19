@@ -1,6 +1,7 @@
 import React from 'react';
 import '../assets/css/Electors_Home.css';
 import { Link } from 'react-router-dom';
+import jsPDF from 'jspdf';
 
 const Electors_Home = () => {
   // Error handler function for images
@@ -95,7 +96,7 @@ const Electors_Home = () => {
               <div className="service-icon">📍</div>
               <h3 className="service-title">Know Your Polling Station</h3>
               <p className="service-description">Find your designated polling location and get directions</p>
-              <Link to="/polling-station" className="info-service-btn">
+              <Link to="/FindPollingBooth" className="info-service-btn">
                 Find Station
               </Link>
             </div>
@@ -105,7 +106,7 @@ const Electors_Home = () => {
               <div className="service-icon">📄</div>
               <h3 className="service-title">Download Forms for Registration</h3>
               <p className="service-description">Access and download voter registration forms and documents</p>
-              <Link to="/registration-forms" className="info-service-btn">
+              <Link to= "https://www.eci.gov.in/eci-backend/public/api/download?url=LMAhAK6sOPBp%2FNFF0iRfXbEB1EVSLT41NNLRjYNJJP1KivrUxbfqkDatmHy12e%2FzVx8fLfn2ReU7TfrqYobgIv8V1J3%2FbnvpGaH6lo4J7mSAV4qUrIVTUEqNvgWxR217M%2F6vrKKpsRw%2FZKKIh2KKFNusQDiQOFlUppOzD5JbmjsASjLJ8NpA5eCa2pX1fI6C" className="info-service-btn">
                 Get Forms
               </Link>
             </div>

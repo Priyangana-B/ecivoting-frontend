@@ -378,7 +378,7 @@ const LokSabhaPortal = () => {
                 <section className="section" id="lok-sabha-representatives">
                     <div className="section-header">
                         <div className="section-icon">🏛️</div>
-                        <h2>Bidhan Sabha Representatives</h2>
+                        <h2>Lok Sabha Representatives</h2>
                     </div>
 
                     <p style={{ marginBottom: "25px", color: "#666", lineHeight: "1.6" }}>Select your state and district to view the current Lok Sabha members representing your constituency.</p>

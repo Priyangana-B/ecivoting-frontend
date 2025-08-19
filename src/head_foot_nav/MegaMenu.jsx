@@ -5,35 +5,24 @@ import Register from "../components/Register";
 // Data for the menu links, organized by section
 const menuSections = [
   {
-    title: 'VOTERS',
+    title: 'ELECTORS',
     links: [
       { name: 'Register in Electoral Roll', href: 'Register' },
-      // { name: 'Track Application Status', href: 'PPRTMS' },
       { name: 'Download E-EPIC', href: 'DownloadEpic' },
       { name: 'Search Electoral Roll', href: 'SearchElectoralRoll' },
-      // { name: 'Forms For Registration in Electoral Roll', href: '' },
       { name: 'Update Elector Details', href: 'UpdateDetails' },
       { name: 'Delete Elector Details', href: 'DeleteApplication' },
-      // { name: 'Service Voters', href: '#' },
-      // { name: 'Overseas Voters', href: '#' },
-      // { name: 'Register Complaint', href: '#' },
-      // { name: 'Voter Education', href: 'Voter' },
+      
     ],
     className: 'voters-section',
   },
   {
     title: 'ELECTION MANAGEMENT',
     links: [
-      { name: 'Current Elections', href: '#' },
-      { name: 'Past Assembly Elections', href: '#' },
-      { name: 'Past Parliamentary Elections', href: '#' },
-      { name: 'Past Bye Elections', href: '#' },
-      { name: 'Term of The Houses', href: '#' },
-      { name: 'Election Results', href: '#' },
-      { name: 'Electoral Roll', href: '#' },
-      { name: 'Model Code of Conduct', href: '#' },
-      { name: 'Judicial Reference', href: '#' },
-      { name: 'Delimitation', href: '#' },
+      { name: 'Home', href: 'ElectionManagement_Home' },
+      { name: 'Lok Sabha Portal', href: 'LokSabhaPortal' },
+      { name: 'Rajya Sabha Portal', href: 'RajyaSabhaPortal' },
+      { name: 'Bidhan Sabha Portal', href: 'BidhanSabhaPortal' },
     ],
     className: 'election-mgmt-section',
   },
@@ -47,50 +36,33 @@ const menuSections = [
       { name: 'Organizational Elections', href: 'organizational-election' },
       { name: 'Guidelines', href: 'guidelines' },
       { name: 'Disputes and Merger Filings', href: 'complaint-form' },
-      // { name: 'Candidate App', href: '#' },
+   
     ],
   },
   {
     title: 'MEDIA & PUBLICATIONS',
     links: [
-      { name: 'ECI Publications', href: '#' },
-      { name: 'Compendium of Instructions', href: '#' },
-      { name: 'Election Results & Statistics', href: '#' },
-      { name: 'Narrative Report & Other Publications', href: '#' },
-      { name: 'Electoral Statistics Pocket Books', href: '#' },
-      { name: 'Miscellaneous Statistics & Papers', href: '#' },
+      { name: 'Press Releases', href: 'press-releases' },
+      { name: 'Current Issues', href: 'current-issues' },
+      { name: 'Media-Photos', href: 'media/photos' },
+      { name: 'Media-Videos', href: 'media/videos' },
+
     ],
   },
+  
+  
   {
-    title: 'EVM/VVPAT',
+    title: 'VOTER EDUCATION',
     links: [
-      { name: 'FAQs On EVM', href: '#' },
-      { name: 'Presentation on EVM', href: '#' },
-      { name: 'Status Paper on EVM', href: '#' },
-      { name: 'Manual on EVM And VVPAT', href: '#' },
-      { name: 'Legal History of EVMs And VVPATs', href: '#' },
-    ],
-  },
-  {
-    title: 'ECI OFFICIALS',
-    links: [
-      { name: 'Quick Links For ECI Officials', href: '#' },
-      { name: 'ECI Instructions', href: '#' },
-      { name: 'Observer Portal', href: '#' }, // Added
-      { name: 'Handbooks/Manuals/Model Check List', href: '#' },
-      { name: 'eBooks', href: '#' },
-      { name: 'FAQs', href: '#' }, // Added
-    ],
-  },
-  {
-    title: 'ABOUT ECI',
-    links: [
-      { name: 'About ECI', href: '#' },
-      { name: 'Hon\'ble Commission', href: '#' },
-      { name: 'Former CEC/EC', href: '#' }, // Added
-      { name: 'Directory', href: '#' },
-      { name: 'International Cooperation', href: '#' },
-      { name: 'Media Gallery', href: '#' }, // Added
+      { name: 'Home', href: 'VoterEducation_Home' },
+      { name: 'Register To Vote', href: 'RegisterToVote' },
+      { name: 'How To Vote', href: 'HowToVote' }, 
+      { name: 'Find Polling Booth', href: 'FindPollingBooth' },
+      { name: 'Why Voting Matters', href: 'WhyVotingMatters' },
+      { name: 'Know Your Candidate', href: 'KnowYourCandidate' }, 
+      { name: 'Voting Process', href: 'VotingProcess' }, 
+      { name: 'Election Dates', href: 'ElectionDates' }, 
+      { name: 'Youth Corner', href: 'YouthCorner' }, 
     ],
   },
 ];
