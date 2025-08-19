@@ -454,7 +454,7 @@ const DeleteApplication = () => {
         </div>
       </main>
 
-      {/* Footer */}
+   
     
     </div>
   );

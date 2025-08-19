@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+
+
+import publication1Img from '../assets/images/publication1Img.png';
+import publication2Img from '../assets/images/publication2Img.png';
+
 import {
   FaArrowRight,
   FaArrowDown
@@ -35,13 +40,14 @@ const MediaAndPublications = () => {
 
   const publications = [
     {
-      image: "/publication1-img.png",
+      
+      image: publication1Img, // ✅ FIXED
       title: "ECI Publications",
       description: "List of latest ECI Publications and scanned publications containing about 1 Lakh scanned pages – of Commission's Publications since 1950s.",
       path: "/publications/eci-publications"
     },
     {
-      image: "/publication2-img.png",
+      image: publication2Img,
       title: "Election Result and Statistical Report",
       description: "Comprehensive reports on election outcomes, constituency-wise results, and statistical analysis of voter behavior and turnout trends.",
       path: "/publications/election-statistical-report"

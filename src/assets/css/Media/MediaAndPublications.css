@@ -1,19 +1,22 @@
+/* ===== MEDIA & PUBLICATIONS SECTION ===== */
 .media-pub-section {
   background: #f7f9fc;
   padding: 60px 20px;
   font-family: 'Segoe UI', sans-serif;
 }
 
-.container {
+.media-pub-section .container {
   max-width: 1200px;
   margin: auto;
 }
 
-.section-title {
+.media-pub-section .section-title {
   font-size: 32px;
   text-align: center;
   margin-bottom: 40px;
   color: #1e293b;
+  display: block;
+  width: 100%;
 }
 
 .tabs {
@@ -21,6 +24,7 @@
   justify-content: center;
   margin-bottom: 30px;
   gap: 20px;
+  margin-top: 20px;
 }
 
 .tab-btn {
@@ -39,6 +43,7 @@
 }
 
 .tab-content {
+  margin: 20px 0;
   padding: 20px;
 }
 
@@ -141,4 +146,67 @@
     width: 100%;
     height: auto;
   }
+}
+
+/* ===== SOCIAL MEDIA SECTION ===== */
+.social-media-section {
+  background: #fff;
+  padding: 60px 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.social-media-section .container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.social-media-section .section-title {
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 40px;
+  color: #1e293b;
+  display: block;
+  width: 100%;
+}
+
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.social-card {
+  background: #f9fafb;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+}
+
+.social-card h4 {
+  margin-bottom: 15px;
+  color: #1f2937;
+  font-size: 20px;
+}
+
+.tweet-embed {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.social-media-links {
+  text-align: center;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.social-icon svg {
+  transition: transform 0.2s ease;
+}
+
+.social-icon:hover svg {
+  transform: scale(1.1);
 }

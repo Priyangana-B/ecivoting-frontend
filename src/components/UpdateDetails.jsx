@@ -571,7 +571,7 @@ const UpdateDetails = () => {
         </div>
       </main>
 
-      {/* Footer */}
+ 
 
     </div>
   );
