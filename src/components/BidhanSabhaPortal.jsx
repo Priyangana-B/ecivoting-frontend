@@ -1,0 +1,453 @@
+import React, { useEffect, useState } from 'react';
+import '../assets/css/Election_Management/Sabha_Portal.css';
+
+const BidhanSabhaPortal = () => {
+    const [captcha, setCaptcha] = useState('');
+    const [selectedState, setSelectedState] = useState('');
+    const [selectedDistrict, setSelectedDistrict] = useState('');
+    const [members, setMembers] = useState([]);
+    const [showMembersTable, setShowMembersTable] = useState(false);
+    const [successMessage, setSuccessMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+
+    // Sample data for members
+    const membersData = {
+        'west-bengal': {
+            'kolkata': [
+                { name: 'Dr. Rajesh Kumar Singh', aadhar: '1234-****-9012', assembly: 'Kolkata North' },
+                { name: 'Smt. Priya Sharma Devi', aadhar: '2345-****-0123', assembly: 'Kolkata South' },
+                { name: 'Shri Amit Chatterjee Roy', aadhar: '3456-****-1234', assembly: 'Kolkata East' },
+                { name: 'Smt. Sunita Banerjee Das', aadhar: '4567-****-2345', assembly: 'Kolkata West' },
+                { name: 'Dr. Debasis Mukherjee Sen', aadhar: '5678-****-3456', assembly: 'Kolkata Central' },
+                { name: 'Smt. Mamata Roy Ghosh', aadhar: '6789-****-4567', assembly: 'Behala East' },
+                { name: 'Shri Subrata Das Gupta', aadhar: '7890-****-5678', assembly: 'Behala West' },
+                { name: 'Dr. Ruma Chakraborty Pal', aadhar: '8901-****-6789', assembly: 'Jadavpur' },
+                { name: 'Shri Tapan Bhattacharya Jha', aadhar: '9012-****-7890', assembly: 'Tollygunge' },
+                { name: 'Smt. Kavita Sinha Mitra', aadhar: '0123-****-8901', assembly: 'Ballygunge' }
+            ],
+            'howrah': [
+                { name: 'Shri Binod Kumar Jha', aadhar: '1111-****-3333', assembly: 'Howrah North' },
+                { name: 'Smt. Geeta Rani Singh', aadhar: '2222-****-4444', assembly: 'Howrah South' },
+                { name: 'Dr. Manoj Tiwari Yadav', aadhar: '3333-****-5555', assembly: 'Howrah Central' },
+                { name: 'Smt. Sushma Devi Gupta', aadhar: '4444-****-6666', assembly: 'Bally' },
+                { name: 'Shri Rakesh Pandey Shah', aadhar: '5555-****-7777', assembly: 'Uluberia' },
+                { name: 'Dr. Nita Sharma Mishra', aadhar: '6666-****-8888', assembly: 'Sankrail' },
+                { name: 'Shri Vikash Kumar Roy', aadhar: '7777-****-9999', assembly: 'Panchla' },
+                { name: 'Smt. Sunanda Devi Lal', aadhar: '8888-****-0000', assembly: 'Jagatballavpur' },
+                { name: 'Dr. Ramesh Chandra Das', aadhar: '9999-****-1111', assembly: 'Domjur' },
+                { name: 'Smt. Pushpa Rani Jain', aadhar: '0000-****-2222', assembly: 'Uttarpara' }
+            ]
+        },
+        'maharashtra': {
+            'mumbai': [
+                { name: 'Shri Suresh Patil Rao', aadhar: '1122-****-5566', assembly: 'Mumbai North' },
+                { name: 'Smt. Vandana Kulkarni Joshi', aadhar: '2233-****-6677', assembly: 'Mumbai South' },
+                { name: 'Dr. Rahul Deshmukh More', aadhar: '3344-****-7788', assembly: 'Mumbai Central' },
+                { name: 'Smt. Shweta Sharma Agarwal', aadhar: '4455-****-8899', assembly: 'Andheri East' },
+                { name: 'Shri Ganesh Yadav Thakur', aadhar: '5566-****-9900', assembly: 'Andheri West' },
+                { name: 'Dr. Meera Gupta Sinha', aadhar: '6677-****-0011', assembly: 'Borivali' },
+                { name: 'Shri Santosh Kumar Verma', aadhar: '7788-****-1122', assembly: 'Malad' },
+                { name: 'Smt. Rekha Devi Pandey', aadhar: '8899-****-2233', assembly: 'Kandivali' },
+                { name: 'Dr. Ajay Singh Rajput', aadhar: '9900-****-3344', assembly: 'Bandra' },
+                { name: 'Smt. Pooja Sharma Tiwari', aadhar: '0011-****-4455', assembly: 'Kurla' }
+            ]
+        }
+    };
+
+    // District data
+    const districtData = {
+        'west-bengal': ['kolkata', 'howrah', 'north-24-parganas', 'south-24-parganas', 'darjeeling'],
+        'maharashtra': ['mumbai', 'pune', 'nagpur', 'nashik', 'thane'],
+        'uttar-pradesh': ['lucknow', 'kanpur', 'agra', 'varanasi', 'allahabad'],
+        'karnataka': ['bangalore', 'mysore', 'hubli', 'mangalore', 'belgaum'],
+        'tamil-nadu': ['chennai', 'coimbatore', 'madurai', 'salem', 'tiruchirappalli']
+    };
+
+    // Generate captcha function
+    const generateCaptcha = () => {
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        let newCaptcha = '';
+        for (let i = 0; i < 5; i++) {
+            newCaptcha += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        setCaptcha(newCaptcha);
+    };
+
+    // Handle state change
+    const handleStateChange = (e) => {
+        const state = e.target.value;
+        setSelectedState(state);
+        setSelectedDistrict('');
+        setShowMembersTable(false);
+        setMembers([]);
+    };
+
+    // Handle district change
+    const handleDistrictChange = (e) => {
+        const district = e.target.value;
+        setSelectedDistrict(district);
+
+        if (selectedState && district) {
+            const membersList = membersData[selectedState] && membersData[selectedState][district];
+            if (membersList) {
+                setMembers(membersList);
+                setShowMembersTable(true);
+            } else {
+                setMembers([]);
+                setShowMembersTable(true);
+            }
+        } else {
+            setShowMembersTable(false);
+        }
+    };
+
+    // Handle form submission
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(e.target);
+        const data = Object.fromEntries(formData);
+        const captchaInput = data.captcha.toUpperCase();
+
+        // Clear previous messages
+        setSuccessMessage('');
+        setErrorMessage('');
+
+        // Validate captcha
+        if (captchaInput !== captcha) {
+            setErrorMessage('❌ Security code verification failed. Please try again with the correct code.');
+            generateCaptcha();
+            e.target.captcha.value = '';
+            return;
+        }
+
+        // Validate voter ID format
+        if (data.voterId.length < 8 || !/^[A-Z]{3}[0-9]/.test(data.voterId.toUpperCase())) {
+            setErrorMessage('❌ Please enter a valid Voter ID in the format ABC1234567.');
+            return;
+        }
+
+        // Validate phone number
+        if (!/^[6-9][0-9]{9}$/.test(data.phone)) {
+            setErrorMessage('❌ Please enter a valid 10-digit Indian mobile number.');
+            return;
+        }
+
+        // Validate name
+        if (data.name.trim().length < 3) {
+            setErrorMessage('❌ Please enter your full name as per Voter ID (minimum 3 characters).');
+            return;
+        }
+
+        // Success
+        setSuccessMessage(`✅ Authentication Successful!\nWelcome ${data.name}! Your voter credentials have been verified successfully.\nYou are now authorized to proceed with the voting process.`);
+
+        // Reset form
+        e.target.reset();
+        generateCaptcha();
+    };
+
+    // Input formatters
+    const handlePhoneInput = (e) => {
+        let value = e.target.value.replace(/\D/g, '');
+        if (value.length > 10) {
+            value = value.slice(0, 10);
+        }
+        e.target.value = value;
+    };
+
+    const handleVoterIdInput = (e) => {
+        e.target.value = e.target.value.toUpperCase();
+    };
+
+    const handleCaptchaInput = (e) => {
+        e.target.value = e.target.value.toUpperCase();
+    };
+
+    const handleNameInput = (e) => {
+        let value = e.target.value;
+        value = value.replace(/\b\w/g, function (match) {
+            return match.toUpperCase();
+        });
+        e.target.value = value;
+    };
+
+    // Handle input focus and blur for styling
+    const handleInputFocus = (e) => {
+        e.target.style.borderColor = '#2196F3';
+    };
+
+    const handleInputBlur = (e) => {
+        if (e.target.checkValidity()) {
+            e.target.style.borderColor = '#4caf50';
+        } else {
+            e.target.style.borderColor = '#f44336';
+        }
+    };
+
+    // Handle gallery item clicks
+    const handleGalleryClick = (e) => {
+        e.currentTarget.style.transform = 'scale(0.98)';
+        setTimeout(() => {
+            e.currentTarget.style.transform = 'translateY(-2px)';
+        }, 150);
+    };
+
+    useEffect(() => {
+        // Generate initial captcha
+        generateCaptcha();
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    }, []);
+
+    return (
+        <div>
+           
+
+          
+
+            <div className="container">
+                <section className="info-banner" id="info-banner-section">
+                    <h3>🔒 Secure Voting Portal</h3>
+                    <p>This is the official Election Commission of India portal for Lok Sabha elections. All voter information is encrypted and securely transmitted. Please ensure you have your valid Voter ID and registered mobile number before proceeding.</p>
+                </section>
+
+                <section className="section" id="voter-authentication">
+                    <div className="section-header">
+                        <div className="section-icon">👤</div>
+                        <h2>Voter Authentication</h2>
+                    </div>
+
+                    {successMessage && (
+                        <div className="success-message" style={{ display: 'block' }}>
+                            <strong>{successMessage.split('\n')[0]}</strong><br />
+                            {successMessage.split('\n').slice(1).map((line, index) => (
+                                <span key={index}>{line}<br /></span>
+                            ))}
+                        </div>
+                    )}
+
+                    {errorMessage && (
+                        <div className="error-message" style={{ display: 'block' }}>
+                            {errorMessage}
+                        </div>
+                    )}
+
+                    <form className="login-form" onSubmit={handleFormSubmit}>
+                        <div className="form-group">
+                            <label htmlFor="voterId">Voter ID <span className="required">*</span></label>
+                            <input
+                                type="text"
+                                id="voterId"
+                                name="voterId"
+                                required
+                                placeholder="Enter Voter ID (e.g., ABC1234567)"
+                                maxLength="15"
+                                onInput={handleVoterIdInput}
+                                onFocus={handleInputFocus}
+                                onBlur={handleInputBlur}
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="email">Email Address <span className="required">*</span></label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                required
+                                placeholder="Enter registered email address"
+                                onFocus={handleInputFocus}
+                                onBlur={handleInputBlur}
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="phone">Mobile Number <span className="required">*</span></label>
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                required
+                                pattern="[0-9]{10}"
+                                placeholder="10-digit mobile number"
+                                maxLength="10"
+                                onInput={handlePhoneInput}
+                                onFocus={handleInputFocus}
+                                onBlur={handleInputBlur}
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="name">Full Name <span className="required">*</span></label>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                required
+                                placeholder="Name as per Voter ID"
+                                onInput={handleNameInput}
+                                onFocus={handleInputFocus}
+                                onBlur={handleInputBlur}
+                            />
+                        </div>
+
+                        <div className="captcha-container">
+                            <div className="captcha-label">Security Code <span className="required">*</span></div>
+                            <div className="captcha-display">{captcha}</div>
+                            <button type="button" className="captcha-refresh" onClick={generateCaptcha}>Refresh</button>
+                            <input
+                                type="text"
+                                className="captcha-input"
+                                name="captcha"
+                                required
+                                placeholder="Enter code"
+                                maxLength="5"
+                                onInput={handleCaptchaInput}
+                                onFocus={handleInputFocus}
+                                onBlur={handleInputBlur}
+                            />
+                        </div>
+
+                        <button type="submit" className="login-btn">Authenticate & Proceed to Vote</button>
+                    </form>
+                </section>
+
+                <section className="section" id="lok-sabha-representatives">
+                    <div className="section-header">
+                        <div className="section-icon">🏛️</div>
+                        <h2>Bidhan Sabha Representatives</h2>
+                    </div>
+
+                    <p style={{ marginBottom: "25px", color: "#666", lineHeight: "1.6" }}>Select your state and district to view the current Lok Sabha members representing your constituency.</p>
+
+                    <div className="selection-container">
+                        <div className="form-group">
+                            <label htmlFor="stateSelect">Select State</label>
+                            <select
+                                id="stateSelect"
+                                name="state"
+                                value={selectedState}
+                                onChange={handleStateChange}
+                                onFocus={handleInputFocus}
+                                onBlur={handleInputBlur}
+                            >
+                                <option value="">-- Choose Your State --</option>
+                                <option value="west-bengal">West Bengal</option>
+                                <option value="maharashtra">Maharashtra</option>
+                                <option value="uttar-pradesh">Uttar Pradesh</option>
+                                <option value="karnataka">Karnataka</option>
+                                <option value="tamil-nadu">Tamil Nadu</option>
+                            </select>
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="districtSelect">Select District</label>
+                            <select
+                                id="districtSelect"
+                                name="district"
+                                value={selectedDistrict}
+                                onChange={handleDistrictChange}
+                                onFocus={handleInputFocus}
+                                onBlur={handleInputBlur}
+                            >
+                                <option value="">-- Choose Your District --</option>
+                                {selectedState && districtData[selectedState] && districtData[selectedState].map(district => (
+                                    <option key={district} value={district}>
+                                        {district.split('-').map(word =>
+                                            word.charAt(0).toUpperCase() + word.slice(1)
+                                        ).join(' ')}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="membersContainer">
+                        {showMembersTable && (
+                            <table className="members-table" style={{ display: "table" }}>
+                                <thead>
+                                    <tr>
+                                        <th>Serial No.</th>
+                                        <th>Representative Name</th>
+                                        <th>Aadhar ID</th>
+                                        <th>Constituency</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {members.length > 0 ? (
+                                        members.map((member, index) => (
+                                            <tr key={index}>
+                                                <td style={{ fontWeight: "600" }}>{String(index + 1).padStart(2, '0')}</td>
+                                                <td style={{ fontWeight: "600", color: "#2196F3" }}>{member.name}</td>
+                                                <td style={{ fontFamily: "monospace" }}>{member.aadhar}</td>
+                                                <td>{member.assembly}</td>
+                                            </tr>
+                                        ))
+                                    ) : (
+                                        <tr>
+                                            <td colSpan="4" style={{ textAlign: "center", padding: "40px", color: "#666", fontStyle: "italic" }}>
+                                                No representative data available for this district.<br />
+                                                Please contact the Election Commission office for more information.
+                                            </td>
+                                        </tr>
+                                    )}
+                                </tbody>
+                            </table>
+                        )}
+                    </div>
+                </section>
+
+                <section className="section" id="democracy-in-action">
+                    <div className="section-header">
+                        <div className="section-icon">📸</div>
+                        <h2>Democracy in Action</h2>
+                    </div>
+
+                    <p style={{ marginBottom: "25px", color: "#666", lineHeight: "1.6" }}>Witness the democratic process through these glimpses of India's electoral journey and the institutions that uphold our democracy.</p>
+
+                    <div className="gallery">
+                        <div className="gallery-item" onClick={handleGalleryClick}>
+                            <img src="https://placehold.co/400x250/2196F3/ffffff?text=Parliament+House" alt="Parliament House" />
+                        </div>
+
+                        <div className="gallery-item" onClick={handleGalleryClick}>
+                            <img src="https://placehold.co/400x250/64B5F6/ffffff?text=Electronic+Voting" alt="Electronic Voting" />
+                        </div>
+
+                        <div className="gallery-item" onClick={handleGalleryClick}>
+                            <img src="https://placehold.co/400x250/2196F3/ffffff?text=Citizen+Participation" alt="Citizen Participation" />
+                        </div>
+
+                        <div className="gallery-item" onClick={handleGalleryClick}>
+                            <img src="https://placehold.co/400x250/64B5F6/ffffff?text=Election+Commission" alt="Election Commission" />
+                        </div>
+
+                        <div className="gallery-item" onClick={handleGalleryClick}>
+                            <img src="https://placehold.co/400x250/2196F3/ffffff?text=Democratic+Victory" alt="Democratic Victory" />
+                        </div>
+
+                        <div className="gallery-item" onClick={handleGalleryClick}>
+                            <img src="https://placehold.co/400x250/64B5F6/ffffff?text=Vote+Counting" alt="Vote Counting" />
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            
+        </div>
+    );
+};
+
+export default BidhanSabhaPortal;

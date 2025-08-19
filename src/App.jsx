@@ -55,6 +55,13 @@ import RegisterToVote from "./components/RegisterToVote";
 import HowToVote from "./components/HowToVote";
 import FindPollingBooth from "./components/FindPollingBooth";
 
+
+
+
+import ElectionManagement_Home from './components/ElectionManagement_Home';
+import LokSabhaPortal from './components/LokSabhaPortal';
+import BidhanSabhaPortal from './components/BidhanSabhaPortal';
+import RajyaSabhaPortal from './components/RajyaSabhaPortal';
 // Import other components...
 
 
@@ -123,6 +130,15 @@ function App() {
         <Route path="/RegisterToVote" element={<RegisterToVote />} />
         <Route path="/HowToVote" element={<HowToVote />} />
         <Route path="/FindPollingBooth" element={<FindPollingBooth />} />
+
+
+
+
+          {/* Election Management */}
+          <Route path="/ElectionManagement_Home" element={<ElectionManagement_Home />} />
+          <Route path='/LokSabhaPortal' element={<LokSabhaPortal />} />
+          <Route path='/BidhanSabhaPortal' element={<BidhanSabhaPortal />} />
+          <Route path='/RajyaSabhaPortal' element={<RajyaSabhaPortal />} />
           
          
           {/* Add other routes */}

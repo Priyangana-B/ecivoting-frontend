@@ -75,7 +75,7 @@ export default function Home() {
           </div>
           <div className="icon-box">
             <img src={electionMgmtIcon} alt="Election Management" />
-            <a href="/Vote_Home"><p>Election Management</p></a>
+            <a href="/ElectionManagement_Home"><p>Election Management</p></a>
           </div>
           <div className="icon-box">
             <img src={mediaIcon} alt="Media & Publication" />
