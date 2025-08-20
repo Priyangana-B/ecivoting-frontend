@@ -2,10 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import "../assets/css/PoliticalPartiesCandidates/PoliticalPartyRegistration.css"; // Updated path
 
-
 const PoliticalPartyRegistration = () => {
   const [expandedGuidelines, setExpandedGuidelines] = useState(null);
-  const [expandedParties, setExpandedParties] = useState(null);
 
   const guidelines = [
     {
@@ -56,13 +54,10 @@ const PoliticalPartyRegistration = () => {
         "Handling of objections received during notice period.",
         "Issuance of final registration certificate upon approval."
       ]
-    }
-  ];
-
-  const newParties = [
+    },
     {
-      id: 1,
-      title: "New parties seeking registration (Dated 18/07/2025)",
+      id: 5,
+      title: "Political Parties Registration - New parties seeking registration (Dated 18/07/2025)",
       date: "Date: Friday, 18 Jul 2025, 6:00 PM",
       info: [
         "Applications currently under scrutiny for 25 new parties.",
@@ -78,10 +73,6 @@ const PoliticalPartyRegistration = () => {
     setExpandedGuidelines(expandedGuidelines === id ? null : id);
   };
 
-  const toggleParty = (id) => {
-    setExpandedParties(expandedParties === id ? null : id);
-  };
-
   return (
     <div className="political-party-registration">
       {/* Hero Section */}
@@ -91,8 +82,6 @@ const PoliticalPartyRegistration = () => {
           <p>Registration and management of political parties under electoral laws</p>
         </div>
       </div>
-
-
 
       <div className="container">
         <div className="main-content">
@@ -124,38 +113,9 @@ const PoliticalPartyRegistration = () => {
             </div>
           </section>
 
-          {/* New Parties Section */}
-          <section className="new-parties-section">
-            <h2 className="section-title">
-              Political Parties Registration - New parties seeking registration
-            </h2>
-            <div className="new-parties-list">
-              {newParties.map((party) => (
-                <div key={party.id} className="party-item">
-                  <div className="party-content">
-                    <h3>{party.title}</h3>
-                    <p className="party-date">{party.date}</p>
-                    {expandedParties === party.id && (
-                      <ul className="party-info">
-                        {party.info.map((point, index) => (
-                          <li key={index}>{point}</li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
-                  <button
-                    className="expand-btn"
-                    onClick={() => toggleParty(party.id)}
-                  >
-                    {expandedParties === party.id ? "−" : "+"}
-                  </button>
-                </div>
-              ))}
-            </div>
-          </section>
-
           {/* Registration Info Section */}
           <section className="registration-info">
+            <h2 className="section-title">Political Parties Registration</h2>
             <div className="info-grid">
               <div className="info-card">
                 <h3>Registration Requirements</h3>
@@ -199,22 +159,21 @@ const PoliticalPartyRegistration = () => {
           <section className="download-section">
             <h2 className="section-title">Download Forms and Documents</h2>
             <div className="download-grid">
-            <Link to="/application-form" className="download-item">
-              <div className="download-icon">📄</div>
-              <div className="download-content">
-                <h4>Application Form</h4>
-                <p>Form for political party registration</p>
-              </div>
-          </Link>
+              <Link to="/application-form" className="download-item">
+                <div className="download-icon">📄</div>
+                <div className="download-content">
+                  <h4>Application Form</h4>
+                  <p>Form for political party registration</p>
+                </div>
+              </Link>
 
-          <Link to="/sample-constitution" className="download-item">
-          <div className="download-icon">📊</div>
-          <div className="download-content">
-            <h4>Sample Constitution</h4>
-            <p>Template for party constitution</p>
-          </div>
-        </Link>
-
+              <Link to="/sample-constitution" className="download-item">
+                <div className="download-icon">📊</div>
+                <div className="download-content">
+                  <h4>Sample Constitution</h4>
+                  <p>Template for party constitution</p>
+                </div>
+              </Link>
             </div>
           </section>
         </div>

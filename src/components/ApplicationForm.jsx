@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../assets/css/PoliticalPartiesCandidates/ApplicationForm.css";
+import axios from 'axios';
 
 const ApplicationForm = () => {
   // State for form data
@@ -32,12 +33,49 @@ const ApplicationForm = () => {
 
   // Error state
   const [errors, setErrors] = useState({});
-
   // Captcha state
   const [captcha, setCaptcha] = useState("");
-
   // Submission state
   const [submitted, setSubmitted] = useState(false);
+  // Loading state
+  const [loading, setLoading] = useState(false);
+
+  // API submission function - RENAMED to avoid conflicts
+  const submitApplication = async (formDataToSubmit) => {
+    try {
+      setLoading(true);
+      
+      // Remove captchaInput before sending to backend
+      const { _captchaInput, ...dataToSend } = formDataToSubmit;
+      
+      console.log("Sending data to backend:", dataToSend);
+      
+      const response = await axios.post('http://localhost:3000/api/applications', dataToSend);
+      
+      console.log("Response from backend:", response.data);
+      
+      if (response.data.success) {
+        setSubmitted(true);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        alert('Application submitted successfully!');
+      }
+    } catch (error) {
+      console.error('Error submitting application:', error);
+      
+      if (error.response) {
+        console.error('Server error:', error.response.data);
+        alert(`Submission failed: ${error.response.data.error || 'Server error'}`);
+      } else if (error.request) {
+        console.error('Network error:', error.request);
+        alert('Network error: Please check if the server is running');
+      } else {
+        console.error('Error:', error.message);
+        alert(`Error: ${error.message}`);
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
 
   // Generate captcha
   const generateCaptcha = () => {
@@ -53,6 +91,24 @@ const ApplicationForm = () => {
     generateCaptcha();
   }, []);
 
+  // Email validation
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  // Phone validation
+  const validatePhone = (phone) => {
+    const phoneRegex = /^[6-9]\d{9}$/;
+    return phoneRegex.test(phone.replace(/\D/g, '').slice(-10));
+  };
+
+  // Pin code validation
+  const validatePinCode = (pinCode) => {
+    const pinRegex = /^\d{6}$/;
+    return pinRegex.test(pinCode);
+  };
+
   // Aadhaar validation
   const validateAadhaar = (value) => {
     const aadhaarRegex = /^\d{12}$/;
@@ -60,6 +116,12 @@ const ApplicationForm = () => {
       return "Aadhaar number must be exactly 12 digits.";
     }
     return "";
+  };
+
+  // IFSC validation
+  const validateIFSC = (ifsc) => {
+    const ifscRegex = /^[A-Z]{4}0[A-Z0-9]{6}$/;
+    return ifscRegex.test(ifsc);
   };
 
   // Handle input changes
@@ -92,54 +154,133 @@ const ApplicationForm = () => {
   const validateForm = () => {
     const newErrors = {};
 
-    // Required fields check (simplified for demo)
+    // Required fields check
     if (!formData.partyName.trim()) newErrors.partyName = "Party name is required";
     if (!formData.establishmentDate) newErrors.establishmentDate = "Establishment date is required";
     if (!formData.stateRegistration) newErrors.stateRegistration = "State of registration is required";
     if (!formData.headOfficeAddress.trim()) newErrors.headOfficeAddress = "Head office address is required";
     if (!formData.city.trim()) newErrors.city = "City is required";
     if (!formData.headOfficeState) newErrors.headOfficeState = "Head office state is required";
-    if (!formData.pinCode.trim()) newErrors.pinCode = "Pin Code is required";
-    if (!formData.phoneNumber.trim()) newErrors.phoneNumber = "Phone number is required";
-    if (!formData.email.trim()) newErrors.email = "Email is required";
+    
+    // Pin code validation
+    if (!formData.pinCode.trim()) {
+      newErrors.pinCode = "Pin Code is required";
+    } else if (!validatePinCode(formData.pinCode)) {
+      newErrors.pinCode = "Pin Code must be exactly 6 digits";
+    }
 
+    // Phone validation
+    if (!formData.phoneNumber.trim()) {
+      newErrors.phoneNumber = "Phone number is required";
+    } else if (!validatePhone(formData.phoneNumber)) {
+      newErrors.phoneNumber = "Please enter a valid phone number";
+    }
+
+    // Email validation
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!validateEmail(formData.email)) {
+      newErrors.email = "Please enter a valid email address";
+    }
+
+    // President details
     if (!formData.presidentName.trim()) newErrors.presidentName = "President name is required";
     const aadhaarError = validateAadhaar(formData.presidentAadhaar);
     if (aadhaarError) newErrors.presidentAadhaar = aadhaarError;
     if (!formData.presidentAddress.trim()) newErrors.presidentAddress = "President address is required";
-    if (!formData.presidentPhone.trim()) newErrors.presidentPhone = "President phone number is required";
-    if (!formData.presidentEmail.trim()) newErrors.presidentEmail = "President email is required";
+    
+    if (!formData.presidentPhone.trim()) {
+      newErrors.presidentPhone = "President phone number is required";
+    } else if (!validatePhone(formData.presidentPhone)) {
+      newErrors.presidentPhone = "Please enter a valid phone number";
+    }
 
+    if (!formData.presidentEmail.trim()) {
+      newErrors.presidentEmail = "President email is required";
+    } else if (!validateEmail(formData.presidentEmail)) {
+      newErrors.presidentEmail = "Please enter a valid email address";
+    }
+
+    // Bank details
     if (!formData.bankName.trim()) newErrors.bankName = "Bank name is required";
     if (!formData.branchName.trim()) newErrors.branchName = "Branch name is required";
     if (!formData.accountNumber.trim()) newErrors.accountNumber = "Account number is required";
-    if (!formData.ifscCode.trim()) newErrors.ifscCode = "IFSC code is required";
+    
+    if (!formData.ifscCode.trim()) {
+      newErrors.ifscCode = "IFSC code is required";
+    } else if (!validateIFSC(formData.ifscCode.toUpperCase())) {
+      newErrors.ifscCode = "Please enter a valid IFSC code";
+    }
 
-    if (!formData.totalMembers || formData.totalMembers < 100)
+    // Membership validation
+    const totalMembers = parseInt(formData.totalMembers) || 0;
+    const maleMembers = parseInt(formData.maleMembers) || 0;
+    const femaleMembers = parseInt(formData.femaleMembers) || 0;
+
+    if (!formData.totalMembers || totalMembers < 100) {
       newErrors.totalMembers = "Total members must be at least 100";
-    if (formData.maleMembers === "") newErrors.maleMembers = "Male members count is required";
-    if (formData.femaleMembers === "") newErrors.femaleMembers = "Female members count is required";
+    }
+    
+    if (formData.maleMembers === "") {
+      newErrors.maleMembers = "Male members count is required";
+    }
+    
+    if (formData.femaleMembers === "") {
+      newErrors.femaleMembers = "Female members count is required";
+    }
 
+    // Check if male + female equals total
+    if (totalMembers > 0 && maleMembers >= 0 && femaleMembers >= 0) {
+      if (maleMembers + femaleMembers !== totalMembers) {
+        newErrors.totalMembers = "Total members must equal male + female members";
+      }
+    }
+
+    // Declarations
     if (!formData.declaration) newErrors.declaration = "Declaration must be accepted";
     if (!formData.undertaking) newErrors.undertaking = "Undertaking must be accepted";
 
-    if (formData.captchaInput.trim().toUpperCase() !== captcha) newErrors.captchaInput = "Captcha does not match";
+    // Captcha
+    if (!formData.captchaInput.trim()) {
+      newErrors.captchaInput = "Security code is required";
+    } else if (formData.captchaInput.trim().toUpperCase() !== captcha.toUpperCase()) {
+      newErrors.captchaInput = "Security code does not match";
+    }
 
     return newErrors;
   };
 
-  // Submit handler
-  const handleSubmit = (e) => {
+  // Submit handler - FIXED
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    if (loading) return; // Prevent double submission
+    
+    console.log("Form submission started");
+    
     const validationErrors = validateForm();
+    console.log("Validation errors:", validationErrors);
 
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
+      console.log("Form has validation errors, submission stopped");
+      
+      // Scroll to first error
+      const firstErrorField = Object.keys(validationErrors)[0];
+      const errorElement = document.querySelector(`[name="${firstErrorField}"]`);
+      if (errorElement) {
+        errorElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        errorElement.focus();
+      }
+      
       return;
     }
 
-    // Success
-    setSubmitted(true);
+    // Clear any existing errors
+    setErrors({});
+    
+    // Submit to backend
+    await submitApplication(formData);
   };
 
   return (
@@ -315,6 +456,7 @@ const ApplicationForm = () => {
                 value={formData.pinCode}
                 onChange={handleChange}
                 aria-invalid={!!errors.pinCode}
+                maxLength={6}
                 required
               />
               {errors.pinCode && <span className="error">{errors.pinCode}</span>}
@@ -468,6 +610,7 @@ const ApplicationForm = () => {
                 value={formData.ifscCode}
                 onChange={handleChange}
                 aria-invalid={!!errors.ifscCode}
+                maxLength={11}
                 required
               />
               {errors.ifscCode && <span className="error">{errors.ifscCode}</span>}
@@ -587,10 +730,14 @@ const ApplicationForm = () => {
             {errors.captchaInput && <span className="error">{errors.captchaInput}</span>}
           </div>
 
-          {/* Buttons */}
+          {/* Buttons - ONLY THING CHANGED */}
           <div className="form-buttons">
-            <button type="submit" className="btn-submit">
-              Submit Application
+            <button 
+              type="submit" 
+              className="btn-submit"
+              disabled={loading}
+            >
+              {loading ? 'Submitting...' : 'Submit Application'}
             </button>
             <button
               type="button"

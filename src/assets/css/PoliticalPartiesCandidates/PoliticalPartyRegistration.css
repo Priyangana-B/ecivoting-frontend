@@ -1,240 +1,391 @@
-body {
-  background: #F8F8F8;
-  font-family: 'Segoe UI', sans-serif;
-  color: #748873;
+/* PoliticalPartyRegistration.css */
+
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-/* Page Sections */
-.organizational-election,
-.guidelines,
 .political-party-registration {
-  min-height: 100vh;
-  background: #F8F8F8;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f5f7fa;
 }
 
-/* Info Cards (used in multiple sections) */
-.info-cards,
-.info-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-.info-card {
-  background: #E5E0D8;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(116, 136, 115, 0.2);
+/* Hero Section */
+.page-header {
+  background: linear-gradient(135deg, #D1A980 0%, #748873 100%);
+  color: white;
+  padding: 80px 0;
+  text-align: center;
+  margin-bottom: 50px;
 }
 
-.info-card h3 {
-  color: #748873;
-  font-size: 20px;
-  margin-bottom: 20px;
-  border-bottom: 2px solid #D1A980;
-  padding-bottom: 10px;
-  font-weight: 600;
+.page-header h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.info-card li {
-  color: #748873;
-  margin-bottom: 10px;
-  line-height: 1.5;
+.page-header p {
+  font-size: 1.3rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-/* Guidelines Section Cards */
-.guidelines-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-}
-
-.guideline-card {
-  background: #E5E0D8;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(116, 136, 115, 0.2);
-  border-left: 4px solid #D1A980;
-}
-
-.guideline-card h3 {
-  color: #748873;
-  font-size: 20px;
-  margin-bottom: 20px;
-  font-weight: 600;
-}
-
-.guideline-card li {
-  color: #748873;
-  margin-bottom: 12px;
-  line-height: 1.5;
-}
-
-/* Lists (Political Party Registration) */
-.guidelines-list,
-.new-parties-list {
-  background: #E5E0D8;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(116, 136, 115, 0.15);
-  overflow: hidden;
-}
-
-/* Each Item */
-.guideline-item,
-.party-item {
+/* Main Content */
+.main-content {
   display: flex;
+  flex-direction: column;
+  gap: 60px;
+  padding-bottom: 50px;
+}
+
+/* ✅ Ensure all sections have same width */
+.guidelines-section,
+.registration-info,
+.download-section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Section Titles */
+.section-title {
+  font-size: 2.2rem;
+  color: #2c3e50;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 3px solid #3498db;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, #3498db, #2980b9);
+}
+
+/* Guidelines Section */
+.guidelines-section {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border-left: 5px solid #3498db;
+}
+
+.guidelines-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.guideline-item {
+  background: #f8f9fc;
+  border: 1px solid #e3e8ee;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: flex-start;
   justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  border-bottom: 1px solid #D1A980;
-  transition: background-color 0.3s ease;
+  padding: 25px;
 }
 
-.guideline-item:last-child,
-.party-item:last-child {
-  border-bottom: none;
+.guideline-item:hover {
+  box-shadow: 0 5px 15px rgba(52, 152, 219, 0.15);
+  border-color: #3498db;
 }
 
-.guideline-item:hover,
-.party-item:hover {
-  background: #F8F8F8;
+.guideline-content {
+  flex: 1;
+  padding-right: 20px;
 }
 
-.guideline-content h3,
-.party-content h3 {
-  font-size: 16px;
-  font-weight: 600;
-  color: #748873;
+.guideline-content h3 {
+  font-size: 1.3rem;
+  color: #2c3e50;
   margin-bottom: 8px;
+  font-weight: 600;
 }
 
-.guideline-date,
-.party-date {
-  font-size: 14px;
-  color: #748873;
-}
-
-/* Expanded Info List */
-.guideline-info,
-.party-info {
-  margin-top: 10px;
-  padding-left: 20px;
-  color: #555;
+.guideline-date {
+  color: #7f8c8d;
   font-size: 0.95rem;
-  line-height: 1.5;
+  margin-bottom: 15px;
+  font-style: italic;
 }
 
-.guideline-info li,
-.party-info li {
-  list-style-type: disc;
-  margin-bottom: 6px;
+.guideline-info {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 20px;
+}
+
+.guideline-info li {
+  background: white;
+  padding: 12px 18px;
+  margin-bottom: 8px;
+  border-left: 4px solid #3498db;
+  border-radius: 5px;
+  position: relative;
+}
+
+.guideline-info li:before {
+  content: '✓';
+  color: #27ae60;
+  font-weight: bold;
+  margin-right: 10px;
 }
 
 /* Expand Button */
 .expand-btn {
-  background: #D1A980;
+  background: linear-gradient(135deg, #3498db, #2980b9);
   color: white;
   border: none;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  font-size: 18px;
+  font-size: 1.5rem;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
-  flex-shrink: 0;
-  /* Center the plus sign */
   display: flex;
   align-items: center;
   justify-content: center;
-  line-height: 1;
-  padding: 0;
-
+  flex-shrink: 0;
 }
 
 .expand-btn:hover {
-  background: #B08865;
+  background: linear-gradient(135deg, #2980b9, #1f4e79);
   transform: scale(1.1);
 }
 
-/* Registration Info Wrapper */
+/* Registration Info Section */
 .registration-info {
-  margin: 40px 0;
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border-left: 5px solid #e74c3c;
+}
+
+.registration-info .section-title {
+  border-bottom-color: #e74c3c;
+}
+
+.registration-info .section-title::after {
+  background: linear-gradient(90deg, #e74c3c, #c0392b);
+}
+
+.info-grid {
+  display: flex;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.info-card {
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  padding: 30px;
+  border-radius: 10px;
+  border-left: 5px solid #17a2b8;
+  transition: transform 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.info-card h3 {
+  color: #2c3e50;
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.info-card ul,
+.info-card ol {
+  padding-left: 20px;
+  color: #555;
+  flex-grow: 1;
+}
+
+.info-card li {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.info-card:nth-child(1) {
+  border-left-color: #17a2b8;
+}
+
+.info-card:nth-child(2) {
+  border-left-color: #28a745;
+}
+
+.info-card:nth-child(3) {
+  border-left-color: #ffc107;
 }
 
 /* Download Section */
 .download-section {
-  margin: 40px 0;
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border-left: 5px solid #17a2b8;
+}
+
+.download-section .section-title {
+  border-bottom-color: #17a2b8;
+}
+
+.download-section .section-title::after {
+  background: linear-gradient(90deg, #17a2b8, #138496);
 }
 
 .download-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
 }
 
 .download-item {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  background: #E5E0D8;
-  padding: 20px;
-  border-radius: 12px;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  padding: 25px;
+  border-radius: 10px;
   text-decoration: none;
   color: inherit;
-  box-shadow: 0 4px 6px rgba(116, 136, 115, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 20px;
   transition: all 0.3s ease;
+  border: 2px solid transparent;
 }
 
 .download-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 15px rgba(116, 136, 115, 0.2);
+  background: linear-gradient(135deg, #17a2b8, #138496);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(23, 162, 184, 0.3);
+  border-color: #17a2b8;
 }
 
 .download-icon {
-  font-size: 32px;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #F8F8F8;
-  border-radius: 10px;
+  font-size: 2.5rem;
+  min-width: 60px;
+  text-align: center;
 }
 
 .download-content h4 {
-  font-size: 16px;
+  font-size: 1.3rem;
+  margin-bottom: 8px;
   font-weight: 600;
-  color: #748873;
-  margin-bottom: 5px;
 }
 
 .download-content p {
-  font-size: 14px;
-  color: #748873;
+  opacity: 0.8;
+  font-size: 0.95rem;
 }
 
-/* Responsive */
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .info-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+}
+
 @media (max-width: 768px) {
-  .guideline-item,
-  .party-item {
+  .page-header h1 {
+    font-size: 2.2rem;
+  }
+  
+  .page-header p {
+    font-size: 1.1rem;
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .guidelines-section,
+  .registration-info,
+  .download-section {
+    padding: 25px;
+    margin: 0 10px;
+  }
+  
+  .guideline-item {
     flex-direction: column;
-    align-items: flex-start;
     gap: 15px;
   }
-
+  
+  .guideline-content {
+    padding-right: 0;
+  }
+  
   .expand-btn {
     align-self: flex-end;
   }
-
-  .info-grid,
+  
+  .info-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
   .download-grid {
     grid-template-columns: 1fr;
   }
+  
+  .download-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
 }
 
-.new-parties-section {
-  padding-top: 30px; /* adjust as needed */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 15px;
+  }
+  
+  .page-header {
+    padding: 60px 0;
+  }
+  
+  .page-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .main-content {
+    gap: 40px;
+  }
+  
+  .guidelines-section,
+  .registration-info,
+  .download-section {
+    padding: 20px;
+    margin: 0 5px;
+  }
 }
