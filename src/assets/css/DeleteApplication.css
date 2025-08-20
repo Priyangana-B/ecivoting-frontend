@@ -8,7 +8,7 @@
 :root {
   --primary-color: #2563eb;
   --primary-dark: #1d4ed8;
-  --secondary-color: #64748b;
+  --secondary-color: #010101;
   --success-color: #10b981;
   --error-color: #ef4444;
   --warning-color: #f59e0b;
@@ -30,13 +30,13 @@ body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.6;
   color: #1f2937;
-  background: var(--background);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   min-height: 100vh;
 }
 
 .delete-page {
   min-height: 100vh;
-  background: var(--background);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
 /* Header */
@@ -61,20 +61,25 @@ body {
 }
 
 /* Page Header */
-.page-header {
+.page_header {
   text-align: center;
   margin-bottom: var(--spacing-xl);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 16px;
+  height: 200px;
+  justify-content: center;
+  align-content: center;
 }
 
-.page-title {
+/*.page_title {
   font-size: 2.5rem;
   font-weight: 800;
   color: var(--danger-color);
   margin-bottom: var(--spacing);
   position: relative;
-}
+}*/
 
-.page-title::after {
+.page_title::after {
   content: '';
   position: absolute;
   bottom: -8px;
@@ -86,7 +91,7 @@ body {
   border-radius: 2px;
 }
 
-.page-description {
+.page_description {
   color: var(--secondary-color);
   font-size: 1.1rem;
   line-height: 1.6;

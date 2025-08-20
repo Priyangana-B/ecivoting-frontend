@@ -307,9 +307,9 @@ const DeleteApplication = () => {
           ) : (
             /* Form State */
             <>
-              <div className="page-header">
-                <h1 className="page-title">Delete Voter Application</h1>
-                <p className="page-description">
+              <div className="page_header">
+                <h1 className="page_title">Delete Voter Application</h1>
+                <p className="page_description">
                   Use this form to permanently delete your voter registration application. 
                   This action cannot be undone.
                 </p>
