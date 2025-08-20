@@ -43,6 +43,7 @@
 
 .tab-content {
   background: white;
+  width: 1000px;
   border-radius: 16px;
   padding: 40px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
@@ -180,13 +181,15 @@
 
 .process-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   gap: 25px;
 }
 
 .process-card {
   background: white;
   padding: 30px;
+  width: 300px;
+  display: grid;
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;

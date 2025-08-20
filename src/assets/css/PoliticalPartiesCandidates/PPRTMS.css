@@ -1,7 +1,35 @@
-.pprtms {
-  min-height: 100vh;
-  background: #f8f8f8;
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: #f8f8f8;
+}
+
+/* ---------------- BANNER ---------------- */
+.banner {
+  background: linear-gradient(90deg, #748873, #b08865);
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.banner h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.banner p {
+  font-size: 1.2rem;
+}
+
+/* ---------------- PPRTMS SECTION ---------------- */
+.pprtms {
+  padding: 50px 0;   /* keeps it close to banner */
 }
 
 .tracking-card {
@@ -9,16 +37,18 @@
   padding: 40px;
   border-radius: 16px;
   box-shadow: 0 8px 25px rgba(116, 136, 115, 0.15);
-  max-width: 700px;
-  width: 100%; /* ✅ makes it responsive */
-  margin: 20px; /* ✅ ensures spacing on smaller screens */
+  width: 1000px;
+  max-width: 95%;
+  margin: 0 auto;   /* center horizontally */
   text-align: center;
 }
+
 .tracking-card h2 {
   color: #748873;
   margin-bottom: 30px;
 }
 
+/* ---------------- FORM ---------------- */
 .tracking-form .form-group {
   margin-bottom: 20px;
   text-align: left;
@@ -46,6 +76,7 @@
   background: #5f6f5c;
 }
 
+/* ---------------- ERROR ---------------- */
 .error-box {
   margin-top: 20px;
   padding: 15px;
@@ -55,12 +86,12 @@
   border-radius: 8px;
 }
 
-/* APPLICATION DETAILS */
+/* ---------------- APPLICATION DETAILS ---------------- */
 .application-details-card {
   background: white;
   padding: 30px;
   border-radius: 12px;
-  margin-top: 20px;
+  margin-top: 30px;   /* closer to form */
   box-shadow: 0 4px 10px rgba(116, 92, 59, 0.2);
   text-align: left;
 }
