@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../assets/css/register.css';
+import axios from 'axios';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -18,6 +19,16 @@ const Register = () => {
     captchaInput: '',
     declaration: false
   });
+
+  let registration = async () => {
+    try {
+      let res = await axios.post('http://localhost:3000/api/voters', formData);
+      console.log(res.data);
+      alert('Registration successful!'); // Delete after testing
+    } catch (error) {
+      console.log(`Error in registration: ${error}`);
+    }
+  }
 
   const [currentCaptcha, setCurrentCaptcha] = useState('');
   const [fieldStates, setFieldStates] = useState({});
@@ -457,7 +468,7 @@ const Register = () => {
 
         {/* Submit Button */}
         <div className="submit-group">
-          <button type="submit" className="submit-btn">
+          <button type="submit" className="submit-btn" onClick={registration}>
             Submit Application
           </button>
         </div>
