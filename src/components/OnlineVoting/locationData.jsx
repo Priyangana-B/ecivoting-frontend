@@ -3966,7 +3966,6 @@ export const locationData = {
         narayangarh: "Narayangarh",
         sabang: "Sabang",
         pingla: "Pingla",
-        kharagpur: "Kharagpur",
         debra: "Debra",
         daspur: "Daspur",
         ghatal: "Ghatal (SC)",
