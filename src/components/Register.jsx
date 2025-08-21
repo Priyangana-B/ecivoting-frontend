@@ -20,15 +20,15 @@ const Register = () => {
     declaration: false
   });
 
-  let registration = async () => {
-    try {
-      let res = await axios.post('http://localhost:3000/api/voters', formData);
-      console.log(res.data);
-      alert('Registration successful!'); // Delete after testing
-    } catch (error) {
-      console.log(`Error in registration: ${error}`);
-    }
-  }
+  // let registration = async () => {
+  //   try {
+  //     let res = await axios.post('http://localhost:4500/api/voters', formData);
+  //     console.log(res.data);
+  //     alert('Registration successful!'); //
+  //   } catch (error) {
+  //     console.log(`Error in registration: ${error}`);
+  //   }
+  // }
 
   const [currentCaptcha, setCurrentCaptcha] = useState('');
   const [fieldStates, setFieldStates] = useState({});
@@ -143,7 +143,7 @@ const Register = () => {
   };
 
   // Form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Reset all field states
@@ -235,7 +235,16 @@ const Register = () => {
     }
 
     // Success
-    showModal('Success!', 'Your electoral roll registration has been submitted successfully. You will receive a confirmation shortly.');
+    try {
+      let res = await axios.post('http://localhost:4500/api/voters', formData);
+      console.log(res.data);
+      showModal('Success!', 'Your electoral roll registration has been submitted successfully. You will receive a confirmation shortly.');
+      // alert('Registration successful!');
+    } catch (error) {
+      alert("Wrong");
+      console.log(`Error in registration: ${error}`);
+    }
+    
   };
 
   return (
@@ -468,7 +477,7 @@ const Register = () => {
 
         {/* Submit Button */}
         <div className="submit-group">
-          <button type="submit" className="submit-btn" onClick={registration}>
+          <button type="submit" className="submit-btn" >
             Submit Application
           </button>
         </div>
