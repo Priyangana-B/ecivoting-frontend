@@ -26,7 +26,12 @@
   max-width: 1200px;
   margin: 0 auto 3rem auto;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  background-image: url("https://www.shutterstock.com/image-photo/republic-independence-day-horizontal-background-260nw-2252132599.jpg");
+  background-size: cover;
+  height: 200px;
 }
+
+
 
 .heading h1 {
   font-size: 2.5rem;
