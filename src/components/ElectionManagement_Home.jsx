@@ -43,7 +43,7 @@ const ElectionManagement_Home = () => {
                     <div className="election-cards-grid">
                         {/* Lok Sabha Election Card */}
                         <div className="election-card">
-                            <img src="https://placehold.co/400x250/dbeafe/1e40af.png?text=Lok+Sabha" alt="Lok Sabha Election"/>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSyEXIcmvFhqFMsP_CY0viDbF_G4fvDv94CA&s" alt="Lok Sabha Election"/>
                             <h3>Lok Sabha Elections</h3>
                             <p>
                                 These elections determine the members of the Lok Sabha, the lower house of India's Parliament.
@@ -59,7 +59,7 @@ const ElectionManagement_Home = () => {
 
                         {/* Rajya Sabha Election Card */}
                         <div className="election-card">
-                            <img src="https://placehold.co/400x250/bfdbfe/1c30a5.png?text=Rajya+Sabha" alt="Rajya Sabha Election"/>
+                            <img src="https://media.9curry.com/uploads/organization/image/1432/rajyasabha-logo.jpg" alt="Rajya Sabha Election"/>
                             <h3>Rajya Sabha Elections</h3>
                             <p>
                                 Members of the Rajya Sabha, the upper house of Parliament, are elected by the elected members of
@@ -75,7 +75,7 @@ const ElectionManagement_Home = () => {
 
                         {/* Bidhan Sabha Election Card */}
                         <div className="election-card">
-                            <img src="https://placehold.co/400x250/c0ebf5/007bff.png?text=Bidhan+Sabha" alt="Bidhan Sabha Election"/>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPmwC8PSB79C-iJMEc5TCYNe95352JEUuoHQ&s" alt="Bidhan Sabha Election"/>
                             <h3>Bidhan Sabha Elections</h3>
                             <p>
                                 These are State Assembly Elections, where voters choose representatives for their respective
@@ -129,27 +129,27 @@ const ElectionManagement_Home = () => {
                     <h2>Election Photo Gallery</h2>
                     <div className="image-gallery-grid">
                         <div className="image-item">
-                            <img src="https://placehold.co/600x400/a7f3d0/065f46.png?text=Voting+Booth" alt="Voting Booth"/>
+                            <img src="https://edata.ndtv.com/feeds/liveblog/2406994/637533092677537232.jfif" alt="Voting Booth"/>
                             <div className="caption">A bustling voting booth on election day.</div>
                         </div>
                         <div className="image-item">
-                            <img src="https://placehold.co/600x400/d1fae5/064e3b.png?text=Political+Rally" alt="Political Rally"/>
+                            <img src="https://cpj.org/wp-content/uploads/2024/04/RTSY8I55.jpg?w=760" alt="Political Rally"/>
                             <div className="caption">A large crowd gathered for a political rally.</div>
                         </div>
                         <div className="image-item">
-                            <img src="https://placehold.co/600x400/ace0c3/004c2a.png?text=Ballot+Box" alt="Ballot Box"/>
+                            <img src="https://thumbs.dreamstime.com/b/hand-holds-ballot-paper-box-against-background-indian-flag-people-cast-ballots-elections-india-330576199.jpg" alt="Ballot Box"/>
                             <div className="caption">Close-up of a secure ballot box.</div>
                         </div>
                         <div className="image-item">
-                            <img src="https://placehold.co/600x400/81c784/1b5e20.png?text=Counting+Center" alt="Counting Center"/>
+                            <img src="https://i.guim.co.uk/img/media/73b3b48034a1327c97e17160aa4b11978afd840b/0_0_5500_3668/master/5500.jpg?width=465&dpr=1&s=none&crop=none" alt="Counting Center"/>
                             <div className="caption">Election officials at a vote counting center.</div>
                         </div>
                         <div className="image-item">
-                            <img src="https://placehold.co/600x400/dcedc8/33691e.png?text=Voter+ID" alt="Voter ID"/>
+                            <img src="https://cdn.zeebiz.com/sites/default/files/styles/zeebiz_850x478/public/2019/04/12/82323-voter.jpg" alt="Voter ID"/>
                             <div className="caption">A voter presenting their identification.</div>
                         </div>
                         <div className="image-item">
-                            <img src="https://placehold.co/600x400/c5e1a5/558b2f.png?text=Campaign+Poster" alt="Campaign Poster"/>
+                            <img src="https://www.aljazeera.com/wp-content/uploads/2024/04/AFP__20240417__34PL2YH__v2__HighRes__IndiaPoliticsVoteLifestyle-1713434826.jpg?resize=1920%2C1080" alt="Campaign Poster"/>
                             <div className="caption">Vibrant campaign posters displayed in public.</div>
                         </div>
                     </div>

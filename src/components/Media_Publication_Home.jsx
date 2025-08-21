@@ -22,16 +22,30 @@ const SocialMediaSection = () => {
           <div className="social-card">
             <h4>Tweets by SpokespersonECI</h4>
             <div className="tweet-embed">
-              <a
+              {/* <a
                 className="twitter-timeline"
                 data-width="300"
                 data-height="400"
                 href="https://twitter.com/SpokespersonECI?ref_src=twsrc%5Etfw"
               >
                 Tweets by SpokespersonECI
-              </a>
+              </a> */}
+
+            <iframe width="500" height="200" src="https://www.youtube.com/embed/Mu-7wodvBA8?si=7ghIyZXO4hi-eL-y" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            
+             <p style={{ marginTop: "10px", fontSize: "0.95rem", color: "#333" }}>
+              A BLO from Manipur shares her experience working at the grassroots
+              during the election, highlighting challenges and dedication.
+            </p>
             </div>
           </div>
+
+       
+
 
           {/* Social Links */}
           <div className="social-card social-media-links">
