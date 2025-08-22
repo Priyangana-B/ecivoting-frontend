@@ -2,47 +2,55 @@ import React from 'react';
 
 const VoteSuccess = ({ voterData, locationData, voteData }) => {
   const handleDownloadReceipt = () => {
-    const receiptContent = `
-VOTING RECEIPT
-==============
+    // Structure the receipt data as a JSON object
+    const receiptData = {
+      receiptTitle: "VOTING RECEIPT",
+      voterInformation: {
+        name: voterData.name,
+        voterId: voterData.voterId
+      },
+      location: {
+        state: locationData.state,
+        district: locationData.district,
+        assembly: locationData.assembly
+      },
+      voteDetails: {
+        candidate: voteData.candidateName,
+        party: voteData.candidateParty,
+        dateTime: voteData.timestamp,
+        voteId: voteData.voteId
+      },
+      message: "Thank you for participating in the democratic process!",
+      timestamp: new Date().toISOString(),
+      receiptGenerated: true
+    };
 
-Voter Information:
-Name: ${voterData.name}
-Voter ID: ${voterData.voterId}
+    // Convert the object to a JSON string with proper formatting
+    const jsonContent = JSON.stringify(receiptData, null, 2); // null, 2 for pretty-printing
 
-Location:
-State: ${locationData.state}
-District: ${locationData.district}
-Assembly: ${locationData.assembly}
-
-Vote Details:
-Candidate: ${voteData.candidateName}
-Party: ${voteData.candidateParty}
-Date & Time: ${voteData.timestamp}
-Vote ID: ${voteData.voteId}
-
-Thank you for participating in the democratic process!
-    `;
-
+    // Create and download the JSON file
     const element = document.createElement('a');
-    const file = new Blob([receiptContent], { type: 'text/plain' });
+    const file = new Blob([jsonContent], { type: 'application/json' });
     element.href = URL.createObjectURL(file);
-    element.download = `vote-receipt-${voteData.voteId}.txt`;
+    element.download = `vote-receipt-${voteData.voteId}.json`;
     document.body.appendChild(element);
     element.click();
     document.body.removeChild(element);
+
+    // Clean up the URL object to free memory
+    URL.revokeObjectURL(element.href);
   };
 
   return (
     <div className="voting-container final-success" style={{ display: 'block' }}>
-      {/* <div className="header">
+      <div className="header">
         <h2>🎉 Vote Successful!</h2>
         <p>Thank you for participating in the democratic process.</p>
-      </div> */}
-{/* 
+      </div>
+      
       <div className="final-message">
         Your vote has been recorded and submitted to the election system.
-      </div> */}
+      </div> 
 
       <div className="vote-receipt">
         <h3>📜 Vote Receipt</h3>
@@ -64,7 +72,6 @@ Thank you for participating in the democratic process!
         >
           📄 Submit Your Vote
         </button>
-        
       </div>
     </div>
   );
