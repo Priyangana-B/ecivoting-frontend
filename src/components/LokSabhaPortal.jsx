@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../assets/css/Election_Management/Sabha_Portal.css';
+import axios from "axios";
+
 
 const LokSabhaPortal = () => {
     const navigate = useNavigate();
@@ -105,7 +107,7 @@ const LokSabhaPortal = () => {
     };
 
     // Handle form submission
-    const handleFormSubmit = (e) => {
+    const handleFormSubmit = async (e) => {
         e.preventDefault();
 
         const formData = new FormData(e.target);
@@ -127,7 +129,7 @@ const LokSabhaPortal = () => {
         }
 
         // Validate voter ID format
-        if (data.voterId.length < 8 || !/^[A-Z]{3}[0-9]/.test(data.voterId.toUpperCase())) {
+        if (data.voterId.length < 15 || !/^EPIC[0-9]{6,12}$/.test(data.voterId.toUpperCase())) {
             setErrorMessage('❌ Please enter a valid Voter ID in the format ABC1234567.');
             setIsAuthenticating(false);
             return;
@@ -148,31 +150,51 @@ const LokSabhaPortal = () => {
         }
 
         // Success - Prepare voter data for voting app
-        const voterAuthData = {
-            voterId: data.voterId.toUpperCase(),
+        // Prepare payload for backend auth
+        const payload = {
+            voterId: (data.voterId || '').toUpperCase(),
             email: data.email,
-            phone: data.phone,
-            name: data.name,
-            authenticatedAt: new Date().toISOString(),
-            constituency: selectedDistrict || 'General',
-            state: selectedState || 'General'
+            mobile: data.mobile,       // must match backend schema
+            fullName: data.name        // must match schema field
         };
 
-        // Store voter data in localStorage
-        localStorage.setItem('voterAuthData', JSON.stringify(voterAuthData));
+        try {
+            const res = await axios.post('http://localhost:4500/api/voters/authenticate', payload);
+            const { success, data: voter, message } = res.data;
 
-        setSuccessMessage(`✅ Authentication Successful!\nWelcome ${data.name}!\nRedirecting to voting portal...`);
+            if (!success) {
+                throw new Error(message || "Authentication failed");
+            }
 
-        // Navigate to voting portal after 3 seconds
-        setTimeout(() => {
+            // Build the object to persist for the voting app
+            const voterAuthData = {
+                voterId: voter.voterId,
+                email: voter.email,
+                mobile: voter.mobile,
+                fullName: voter.fullName,
+                authenticatedAt: new Date().toISOString(),
+                constituency: selectedDistrict || voter.city || 'General',
+                state: selectedState || voter.state || 'General'
+            };
+
+            localStorage.setItem('voterAuthData', JSON.stringify(voterAuthData));
+
+            setSuccessMessage(`✅ Authentication Successful!\nWelcome ${voter.fullName}!\nRedirecting to voting portal...`);
+
+            setTimeout(() => {
+                setIsAuthenticating(false);
+                navigate('/OnlineVoting_Home');
+            }, 3000);
+
+            e.target.reset();
+            generateCaptcha();
+        } catch (err) {
+            console.error("Auth error:", err);
+            setErrorMessage(err.message);
             setIsAuthenticating(false);
-            navigate('/OnlineVoting_Home');
-        }, 3000);
-
-        // Reset form
-        e.target.reset();
-        generateCaptcha();
+        }
     };
+
 
     // Input formatters
     const handlePhoneInput = (e) => {
@@ -342,9 +364,9 @@ const LokSabhaPortal = () => {
                         <div className="captcha-container">
                             <div className="captcha-label">Security Code <span className="required">*</span></div>
                             <div className="captcha-display">{captcha}</div>
-                            <button 
-                                type="button" 
-                                className="captcha-refresh" 
+                            <button
+                                type="button"
+                                className="captcha-refresh"
                                 onClick={generateCaptcha}
                                 disabled={isAuthenticating}
                             >
@@ -364,8 +386,8 @@ const LokSabhaPortal = () => {
                             />
                         </div>
 
-                        <button 
-                            type="submit" 
+                        <button
+                            type="submit"
                             className="login-btn"
                             disabled={isAuthenticating}
                         >
@@ -470,9 +492,9 @@ const LokSabhaPortal = () => {
 
                     <div className="gallery">
                         <div className="gallery-item" onClick={handleGalleryClick}>
-                            
+
                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYCHrhwzL5VUSSjPvzHd1FnOI0DxyMN52Grg&s" alt="Parliament House" />
-                            
+
                         </div>
 
                         <div className="gallery-item" onClick={handleGalleryClick}>

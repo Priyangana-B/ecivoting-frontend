@@ -176,26 +176,39 @@
 }
 
 .symbol-application {
-  margin: 50px 0;
+  margin: 0 0;
 }
+
+/* .process-cards {
+  width: 100%;
+  display: flex;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+} */
 
 .process-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* flexible columns */
+  gap: 20px; /* reduce spacing */
+  justify-items: stretch; /* make cards stretch */
 }
 
 .process-card {
   background: white;
   padding: 30px;
-  width: 300px;
-  display: grid;
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
-  position: relative;
   transition: transform 0.3s ease;
+  width: 100%;   /* take full available column space */
+  max-width: 500px; /* optional: control max size */
+  margin: 0 auto;  /* center if smaller than column */
+  margin-top: 20px;
 }
+
+
+
+
 
 .process-card:hover {
   transform: translateY(-5px);

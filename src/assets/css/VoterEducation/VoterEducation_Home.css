@@ -49,11 +49,11 @@
 }
 
 /* Section Headings */
-h2 {
-  font-size: 1.8rem;
-  color: #1e293b;
+.quick-links h2 {
+  font-size: 2.0rem;
+  color: #748873;
   margin-bottom: 1.5rem;
-  font-weight: 600;
+  font-weight: 1500;
   text-align: center;
 }
 
@@ -88,7 +88,7 @@ h2 {
 
 .link-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.15);
+  box-shadow: 0 8px 25px #748873;
   border-color: #748873;
 }
 
@@ -112,6 +112,13 @@ h2 {
 }
 
 /* Info Section */
+.info-section h2{
+  font-size: 2.0rem;
+  color: #748873;
+  margin-bottom: 1.5rem;
+  font-weight: 1500;
+  text-align: center;
+}
 .info-section {
   max-width: 1200px;
   margin: 0 auto;
@@ -231,7 +238,7 @@ h2 {
 /* Focus States for Accessibility */
 .link-card:focus,
 .info-card:focus {
-  outline: 2px solid #3b82f6;
+  outline: 2px solid #748873;
   outline-offset: 2px;
 }
 
