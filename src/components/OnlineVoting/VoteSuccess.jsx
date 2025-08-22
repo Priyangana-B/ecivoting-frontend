@@ -1,6 +1,6 @@
 import React from 'react';
 
-const VoteSuccess = ({ voterData, locationData, voteData, onDownload, onNewVote }) => {
+const VoteSuccess = ({ voterData, locationData, voteData }) => {
   const handleDownloadReceipt = () => {
     const receiptContent = `
 VOTING RECEIPT
@@ -35,14 +35,14 @@ Thank you for participating in the democratic process!
 
   return (
     <div className="voting-container final-success" style={{ display: 'block' }}>
-      <div className="header">
+      {/* <div className="header">
         <h2>🎉 Vote Successful!</h2>
         <p>Thank you for participating in the democratic process.</p>
-      </div>
-
+      </div> */}
+{/* 
       <div className="final-message">
         Your vote has been recorded and submitted to the election system.
-      </div>
+      </div> */}
 
       <div className="vote-receipt">
         <h3>📜 Vote Receipt</h3>
@@ -62,15 +62,9 @@ Thank you for participating in the democratic process!
           className="download-btn"
           onClick={handleDownloadReceipt}
         >
-          📄 Download Receipt
+          📄 Submit Your Vote
         </button>
-        <button 
-          type="button" 
-          className="submit-btn"
-          onClick={onNewVote}
-        >
-          🆕 New Vote Session
-        </button>
+        
       </div>
     </div>
   );

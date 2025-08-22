@@ -998,23 +998,21 @@ export const locationData = {
       north_goa: {
         name: "North Goa",
         assemblies: {
-          panaji: "Panaji",
-          tivim: "Tivim",
-          aldona: "Aldona",
-          calangute: "Calangute",
-          saligao: "Saligao",
-          porvorim: "Porvorim",
-          mapusa: "Mapusa",
-          siolim: "Siolim",
-          mandrem: "Mandrem",
-          pernem: "Pernem",
-          bicholim: "Bicholim",
-          taleigao: "Taleigao",
-          panaji: "Panaji",
-          cumbarjua: "Cumbarjua",
-          maem: "Maem",
-          st_andre: "St. Andre",
-          saligao: "Saligao"
+            panaji: "Panaji",
+            tivim: "Tivim",
+            aldona: "Aldona",
+            calangute: "Calangute",
+            saligao: "Saligao",
+            porvorim: "Porvorim",
+            mapusa: "Mapusa",
+            siolim: "Siolim",
+            mandrem: "Mandrem",
+            pernem: "Pernem",
+            bicholim: "Bicholim",
+            taleigao: "Taleigao",
+            cumbarjua: "Cumbarjua",
+            maem: "Maem",
+            st_andre: "St. Andre"
         }
       },
       south_goa: {
@@ -3097,7 +3095,6 @@ export const locationData = {
           rangang_yangang: "Rangang-Yangang",
           poklok_kamrang: "Poklok-Kamrang",
           rhenock: "Rhenock",
-          chujachen: "Chujachen",
           martam_rumtek: "Martam-Rumtek"
         }
       },
@@ -3754,7 +3751,6 @@ export const locationData = {
         goghat: "Goghat",
         khanakul: "Khanakul",
         polba_dadpur: "Polba Dadpur",
-        singur: "Singur",
         champdani: "Champdani"
       }
     },
@@ -3908,7 +3904,6 @@ export const locationData = {
         monteswar: "Monteswar",
         khandaghosh: "Khandaghosh",
         raina: "Raina",
-        jamalpur: "Jamalpur",
         barddhaman_dakshin: "Barddhaman Dakshin",
         barddhaman_uttar: "Barddhaman Uttar",
         galsi: "Galsi (SC)",
@@ -4026,8 +4021,6 @@ export const locationData = {
         dhupguri: "Dhupguri",
         maynaguri: "Maynaguri (SC)",
         jalpaiguri: "Jalpaiguri",
-        rajganj: "Rajganj (SC)",
-        dabgram_phulbari: "Dabgram-Phulbari"
       }
     },
     alipurduar: {

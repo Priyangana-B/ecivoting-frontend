@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../assets/css/Election_Management/Sabha_Portal.css';
+import axios from "axios";
 
 const RajyaSabhaPortal = () => {
     const navigate = useNavigate();
@@ -104,21 +105,36 @@ const RajyaSabhaPortal = () => {
         }
     };
 
-    // Handle form submission
-    const handleFormSubmit = (e) => {
+    // Handle form submission - FIXED
+    const handleFormSubmit = async (e) => {
         e.preventDefault();
-
-        const formData = new FormData(e.target);
-        const data = Object.fromEntries(formData);
-        const captchaInput = data.captcha.toUpperCase();
 
         // Clear previous messages
         setSuccessMessage('');
         setErrorMessage('');
         setIsAuthenticating(true);
 
-        // Validate captcha
-        if (captchaInput !== captcha) {
+        // Get form data
+        const formData = new FormData(e.target);
+        const data = {
+            voterId: formData.get('voterId')?.trim() || '',
+            email: formData.get('email')?.trim() || '',
+            mobile: formData.get('mobile')?.trim() || '',
+            name: formData.get('name')?.trim() || '',
+            captcha: formData.get('captcha')?.trim() || ''
+        };
+
+        console.log('Form data collected:', data); // Debug log
+
+        // Validate all required fields
+        if (!data.voterId || !data.email || !data.mobile || !data.name || !data.captcha) {
+            setErrorMessage('❌ Please fill in all required fields.');
+            setIsAuthenticating(false);
+            return;
+        }
+
+        // Validate captcha - FIXED
+        if (data.captcha.toUpperCase() !== captcha.toUpperCase()) {
             setErrorMessage('❌ Security code verification failed. Please try again with the correct code.');
             generateCaptcha();
             e.target.captcha.value = '';
@@ -126,55 +142,110 @@ const RajyaSabhaPortal = () => {
             return;
         }
 
-        // Validate voter ID format
-        if (data.voterId.length < 8 || !/^[A-Z]{3}[0-9]/.test(data.voterId.toUpperCase())) {
-            setErrorMessage('❌ Please enter a valid Voter ID in the format ABC1234567.');
+        // Validate voter ID format - FIXED
+        if (data.voterId.length < 6 || data.voterId.length > 15) {
+            setErrorMessage('❌ Please enter a valid Voter ID (6-15 characters).');
             setIsAuthenticating(false);
             return;
         }
 
-        // Validate phone number
-        if (!/^[6-9][0-9]{9}$/.test(data.phone)) {
-            setErrorMessage('❌ Please enter a valid 10-digit Indian mobile number.');
+        // Validate phone number - FIXED
+        if (!/^[6-9]\d{9}$/.test(data.mobile)) {
+            setErrorMessage('❌ Please enter a valid 10-digit Indian mobile number starting with 6-9.');
+            setIsAuthenticating(false);
+            return;
+        }
+
+        // Validate email format
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(data.email)) {
+            setErrorMessage('❌ Please enter a valid email address.');
             setIsAuthenticating(false);
             return;
         }
 
         // Validate name
-        if (data.name.trim().length < 3) {
+        if (data.name.length < 3) {
             setErrorMessage('❌ Please enter your full name as per Voter ID (minimum 3 characters).');
             setIsAuthenticating(false);
             return;
         }
 
-        // Success - Prepare voter data for voting app
-        const voterAuthData = {
+        // Prepare payload for backend - FIXED
+        const payload = {
             voterId: data.voterId.toUpperCase(),
-            email: data.email,
-            phone: data.phone,
-            name: data.name,
-            authenticatedAt: new Date().toISOString(),
-            constituency: selectedDistrict || 'General',
-            state: selectedState || 'General'
+            email: data.email.toLowerCase(),
+            mobile: data.mobile,
+            fullName: data.name
         };
 
-        // Store voter data in localStorage
-        localStorage.setItem('voterAuthData', JSON.stringify(voterAuthData));
+        console.log('Payload being sent:', payload); // Debug log
 
-        setSuccessMessage(`✅ Authentication Successful!\nWelcome ${data.name}!\nRedirecting to voting portal...`);
+        try {
+            console.log('Sending request to server...'); // Debug log
 
-        // Navigate to voting portal after 3 seconds
-        setTimeout(() => {
+            const response = await axios.post('http://localhost:4500/api/voters/authenticate', payload, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                timeout: 10000, // 10 second timeout
+            });
+
+            console.log('Server response:', response.data); // Debug log
+
+            const { success, data: voter, message } = response.data;
+
+            if (!success) {
+                throw new Error(message || "Authentication failed");
+            }
+
+            // Build the object to persist for the voting app
+            const voterAuthData = {
+                voterId: voter.voterId,
+                email: voter.email,
+                mobile: voter.mobile,
+                fullName: voter.fullName,
+                authenticatedAt: new Date().toISOString(),
+                constituency: selectedDistrict || voter.city || 'General',
+                state: selectedState || voter.state || 'General'
+            };
+
+            localStorage.setItem('voterAuthData', JSON.stringify(voterAuthData));
+
+            setSuccessMessage(`✅ Authentication Successful!\nWelcome ${voter.fullName}!\nRedirecting to voting portal...`);
+
+            setTimeout(() => {
+                setIsAuthenticating(false);
+                navigate('/OnlineVoting_Home');
+            }, 3000);
+
+            e.target.reset();
+            generateCaptcha();
+
+        } catch (err) {
+            console.error("Authentication error:", err); // Debug log
+
+            let errorMsg = "Authentication failed. Please try again.";
+
+            if (err.code === 'ECONNABORTED') {
+                errorMsg = "Request timeout. Please check your connection and try again.";
+            } else if (err.response) {
+                // Server responded with error status
+                errorMsg = err.response.data?.message || err.response.data?.error || `Server error: ${err.response.status}`;
+            } else if (err.request) {
+                // Request was made but no response received
+                errorMsg = "Unable to connect to server. Please check if the server is running.";
+            } else {
+                // Something else happened
+                errorMsg = err.message || "An unexpected error occurred.";
+            }
+
+            setErrorMessage(`❌ ${errorMsg}`);
             setIsAuthenticating(false);
-            navigate('/OnlineVoting_Home');
-        }, 3000);
-
-        // Reset form
-        e.target.reset();
-        generateCaptcha();
+        }
     };
 
-    // Input formatters
+    // Input formatters - FIXED
     const handlePhoneInput = (e) => {
         let value = e.target.value.replace(/\D/g, '');
         if (value.length > 10) {
@@ -184,15 +255,20 @@ const RajyaSabhaPortal = () => {
     };
 
     const handleVoterIdInput = (e) => {
-        e.target.value = e.target.value.toUpperCase();
+        let value = e.target.value.replace(/[^A-Za-z0-9]/g, '');
+        e.target.value = value.toUpperCase();
     };
 
     const handleCaptchaInput = (e) => {
-        e.target.value = e.target.value.toUpperCase();
+        let value = e.target.value.replace(/[^A-Za-z0-9]/g, '');
+        e.target.value = value.toUpperCase();
     };
 
     const handleNameInput = (e) => {
         let value = e.target.value;
+        // Allow only letters and spaces
+        value = value.replace(/[^a-zA-Z\s]/g, '');
+        // Capitalize first letter of each word
         value = value.replace(/\b\w/g, function (match) {
             return match.toUpperCase();
         });
@@ -202,13 +278,17 @@ const RajyaSabhaPortal = () => {
     // Handle input focus and blur for styling
     const handleInputFocus = (e) => {
         e.target.style.borderColor = '#2196F3';
+        e.target.style.boxShadow = '0 0 0 2px rgba(33, 150, 243, 0.2)';
     };
 
     const handleInputBlur = (e) => {
-        if (e.target.checkValidity()) {
+        e.target.style.boxShadow = 'none';
+        if (e.target.checkValidity() && e.target.value.trim()) {
             e.target.style.borderColor = '#4caf50';
-        } else {
+        } else if (e.target.value.trim()) {
             e.target.style.borderColor = '#f44336';
+        } else {
+            e.target.style.borderColor = '#ddd';
         }
     };
 
@@ -286,6 +366,7 @@ const RajyaSabhaPortal = () => {
                                 required
                                 placeholder="Enter Voter ID (e.g., ABC1234567)"
                                 maxLength="15"
+                                minLength="6"
                                 onInput={handleVoterIdInput}
                                 onFocus={handleInputFocus}
                                 onBlur={handleInputBlur}
@@ -308,15 +389,16 @@ const RajyaSabhaPortal = () => {
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="phone">Mobile Number <span className="required">*</span></label>
+                            <label htmlFor="mobile">Mobile Number <span className="required">*</span></label>
                             <input
                                 type="tel"
-                                id="phone"
-                                name="phone"
+                                id="mobile"
+                                name="mobile"
                                 required
-                                pattern="[0-9]{10}"
+                                pattern="[6-9][0-9]{9}"
                                 placeholder="10-digit mobile number"
                                 maxLength="10"
+                                minLength="10"
                                 onInput={handlePhoneInput}
                                 onFocus={handleInputFocus}
                                 onBlur={handleInputBlur}
@@ -332,6 +414,7 @@ const RajyaSabhaPortal = () => {
                                 name="name"
                                 required
                                 placeholder="Name as per Voter ID"
+                                minLength="3"
                                 onInput={handleNameInput}
                                 onFocus={handleInputFocus}
                                 onBlur={handleInputBlur}
@@ -342,9 +425,9 @@ const RajyaSabhaPortal = () => {
                         <div className="captcha-container">
                             <div className="captcha-label">Security Code <span className="required">*</span></div>
                             <div className="captcha-display">{captcha}</div>
-                            <button 
-                                type="button" 
-                                className="captcha-refresh" 
+                            <button
+                                type="button"
+                                className="captcha-refresh"
                                 onClick={generateCaptcha}
                                 disabled={isAuthenticating}
                             >
@@ -357,6 +440,7 @@ const RajyaSabhaPortal = () => {
                                 required
                                 placeholder="Enter code"
                                 maxLength="5"
+                                minLength="5"
                                 onInput={handleCaptchaInput}
                                 onFocus={handleInputFocus}
                                 onBlur={handleInputBlur}
@@ -364,8 +448,8 @@ const RajyaSabhaPortal = () => {
                             />
                         </div>
 
-                        <button 
-                            type="submit" 
+                        <button
+                            type="submit"
                             className="login-btn"
                             disabled={isAuthenticating}
                         >
@@ -374,8 +458,7 @@ const RajyaSabhaPortal = () => {
                     </form>
                 </section>
 
-                {/* Rest of your existing sections remain the same */}
-                <section className="section" id="lok-sabha-representatives">
+                <section className="section" id="Rajya-sabha-representatives">
                     <div className="section-header">
                         <div className="section-icon">🏛️</div>
                         <h2>Rajya Sabha Representatives</h2>
@@ -470,9 +553,7 @@ const RajyaSabhaPortal = () => {
 
                     <div className="gallery">
                         <div className="gallery-item" onClick={handleGalleryClick}>
-                            
                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYCHrhwzL5VUSSjPvzHd1FnOI0DxyMN52Grg&s" alt="Parliament House" />
-                            
                         </div>
 
                         <div className="gallery-item" onClick={handleGalleryClick}>
