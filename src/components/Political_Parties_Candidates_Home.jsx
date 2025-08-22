@@ -52,7 +52,7 @@ const Political_Parties_Candidates_Home = () => {
     <div className="home">
       {/* Hero Section */}
       <div className="hero-section">
-        <div className="container">
+        <div className="container" >
           <div className="hero-content">
             <h1>POLITICAL PARTIES/CANDIDATES</h1>
           </div>

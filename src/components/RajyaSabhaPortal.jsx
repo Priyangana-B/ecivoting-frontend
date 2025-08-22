@@ -470,27 +470,29 @@ const RajyaSabhaPortal = () => {
 
                     <div className="gallery">
                         <div className="gallery-item" onClick={handleGalleryClick}>
-                            <img src="https://placehold.co/400x250/2196F3/ffffff?text=Parliament+House" alt="Parliament House" />
+                            
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYCHrhwzL5VUSSjPvzHd1FnOI0DxyMN52Grg&s" alt="Parliament House" />
+                            
                         </div>
 
                         <div className="gallery-item" onClick={handleGalleryClick}>
-                            <img src="https://placehold.co/400x250/64B5F6/ffffff?text=Electronic+Voting" alt="Electronic Voting" />
+                            <img src="https://wpblogassets.paytm.com/paytmblog/uploads/2023/08/Blog_Paytm_Electronic-Voting-Machine-EVM-Take-a-Look-inside-for-more-Info-800x500.jpg" alt="Electronic Voting" />
                         </div>
 
                         <div className="gallery-item" onClick={handleGalleryClick}>
-                            <img src="https://placehold.co/400x250/2196F3/ffffff?text=Citizen+Participation" alt="Citizen Participation" />
+                            <img src="https://vajiramandravi.com/upsc-exam/wp-content/uploads/2025/01/data-207.jpg" alt="Citizen Participation" />
                         </div>
 
                         <div className="gallery-item" onClick={handleGalleryClick}>
-                            <img src="https://placehold.co/400x250/64B5F6/ffffff?text=Election+Commission" alt="Election Commission" />
+                            <img src="https://img.manoramayearbook.in/content/dam/yearbook/learn/world/images/2020/may/election-commission.jpg" alt="Election Commission" />
                         </div>
 
                         <div className="gallery-item" onClick={handleGalleryClick}>
-                            <img src="https://placehold.co/400x250/2196F3/ffffff?text=Democratic+Victory" alt="Democratic Victory" />
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZE88tj7As0l9vJfIfe0yJ_-4XKGYi5im9zg&s" alt="Democratic Victory" />
                         </div>
 
                         <div className="gallery-item" onClick={handleGalleryClick}>
-                            <img src="https://placehold.co/400x250/64B5F6/ffffff?text=Vote+Counting" alt="Vote Counting" />
+                            <img src="https://i.ndtvimg.com/i/2016-09/evm_650x400_71473856309.jpg" alt="Vote Counting" />
                         </div>
                     </div>
                 </section>

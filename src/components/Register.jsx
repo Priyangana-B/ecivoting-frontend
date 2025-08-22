@@ -20,6 +20,16 @@ const Register = () => {
     declaration: false
   });
 
+  // let registration = async () => {
+  //   try {
+  //     let res = await axios.post('http://localhost:4500/api/voters', formData);
+  //     console.log(res.data);
+  //     alert('Registration successful!'); //
+  //   } catch (error) {
+  //     console.log(`Error in registration: ${error}`);
+  //   }
+  // }
+
   const [currentCaptcha, setCurrentCaptcha] = useState('');
   const [fieldStates, setFieldStates] = useState({});
   const [modal, setModal] = useState({
@@ -152,7 +162,7 @@ const Register = () => {
   };
 
   // Form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Reset all field states
@@ -239,16 +249,17 @@ const Register = () => {
       return;
     }
 
-    // ✅ Generate voter ID on success
-    const newVoterId = generateVoterId();
-    setVoterId(newVoterId);
-
-    // ✅ Send to backend
-    registration(newVoterId);
-
-    // ✅ Show success modal with voter ID
-    showModal('Success!', `Your electoral roll registration has been submitted successfully.
-Your Voter ID is: ${newVoterId}. You will receive a confirmation shortly.`);
+    // Success
+    try {
+      let res = await axios.post('http://localhost:4500/api/voters', formData);
+      console.log(res.data);
+      showModal('Success!', 'Your electoral roll registration has been submitted successfully. You will receive a confirmation shortly.');
+      // alert('Registration successful!');
+    } catch (error) {
+      alert("Wrong");
+      console.log(`Error in registration: ${error}`);
+    }
+    
   };
 
   return (
@@ -481,7 +492,7 @@ Your Voter ID is: ${newVoterId}. You will receive a confirmation shortly.`);
 
         {/* Submit Button */}
         <div className="submit-group">
-          <button type="submit" className="submit-btn">
+          <button type="submit" className="submit-btn" >
             Submit Application
           </button>
         </div>
