@@ -409,8 +409,8 @@
 }
 
 /* Enhanced Modal styles with card borders */
-.modal-overlay {
-  position: fixed;
+.modal_overlay {
+  position: relative;
   top: 0;
   left: 0;
   right: 0;
@@ -418,24 +418,28 @@
   background: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
+  padding-right: 500px;
   align-items: center;
   z-index: 1000;
   animation: fadeIn 0.3s ease-out;
   backdrop-filter: blur(8px);
+  border-radius: 10px;
 }
 
 .modal-content {
   background: white;
   padding: 2.5rem;
   border-radius: 20px;
-  max-width: 450px;
+  max-width: 600px;
   width: 90%;
   text-align: center;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   animation: slideIn 0.3s ease-out;
   border: 2px solid rgba(255, 255, 255, 0.3);
-  position: relative;
+  position: absolute;
+  left: 250px;
   overflow: hidden;
+  
 }
 
 .modal-content::before {

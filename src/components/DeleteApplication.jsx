@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import '../assets/css/DeleteApplication.css';
+import "../assets/css/DeleteApplication.css";
 
 const DeleteApplication = () => {
   // Form state management
