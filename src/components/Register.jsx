@@ -26,7 +26,7 @@ const Register = () => {
   //     console.log(res.data);
   //     alert('Registration successful!'); //
   //   } catch (error) {
-  //     console.log(`Error in registration: ${error}`);
+  //     console.log(Error in registration: ${error});
   //   }
   // }
 
@@ -37,7 +37,6 @@ const Register = () => {
     title: '',
     message: ''
   });
-  const [voterId, setVoterId] = useState('');
 
   const states = [
     'Andaman and Nicobar Islands', 'Andhra Pradesh', 'Arunachal Pradesh', 'Assam',
@@ -64,24 +63,6 @@ const Register = () => {
   useEffect(() => {
     generateCaptcha();
   }, []);
-
-  // Generate Unique Voter ID
-  const generateVoterId = () => {
-    const code = "EPIC";
-    const year = new Date().getFullYear();
-    const randomPart = Math.floor(100000 + Math.random() * 900000); // 6-digit random number
-    return code + year + randomPart;
-  };
-
-  // Backend call
-  let registration = async (generatedId) => {
-    try {
-      let res = await axios.post('http://localhost:3000/api/voters', { ...formData, voterId: generatedId });
-      console.log(res.data);
-    } catch (error) {
-      console.log(`Error in registration: ${error}`);
-    }
-  };
 
   // Handle input changes
   const handleInputChange = (e) => {
@@ -196,11 +177,22 @@ const Register = () => {
     ];
 
     let hasEmptyFields = false;
+    let firstErrorField = null;
+
+    const generateVoterId = () => {
+    const code = "EPIC";
+    const year = new Date().getFullYear();
+    const randomPart = Math.floor(100000 + Math.random() * 900000); // 6-digit random number
+    return code + year + randomPart;
+  };
 
     requiredFields.forEach(field => {
       if (!formData[field.name].trim()) {
         hasEmptyFields = true;
         setFieldState(field.name, 'error');
+        if (!firstErrorField) {
+          firstErrorField = field.name;
+        }
       } else {
         setFieldState(field.name, 'success');
       }
@@ -249,11 +241,16 @@ const Register = () => {
       return;
     }
 
+    const newVoterId = generateVoterId();
+  
+
+    const payload = { ...formData, voterId: newVoterId };
+
     // Success
     try {
-      let res = await axios.post('http://localhost:4500/api/voters', formData);
+      let res = await axios.post('http://localhost:4500/api/voters', payload);
       console.log(res.data);
-      showModal('Success!', 'Your electoral roll registration has been submitted successfully. You will receive a confirmation shortly.');
+      showModal('Success!', `Your electoral roll registration has been submitted successfully. Your Epic ID is ${newVoterId} You will receive a confirmation shortly.`);
       // alert('Registration successful!');
     } catch (error) {
       alert("Wrong");
