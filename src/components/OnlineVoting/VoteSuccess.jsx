@@ -1,7 +1,8 @@
 import React from 'react';
+import axios from 'axios';
 
 const VoteSuccess = ({ voterData, locationData, voteData }) => {
-  const handleDownloadReceipt = () => {
+  const handleDownloadReceipt = async () => {
     // Structure the receipt data as a JSON object
     const receiptData = {
       receiptTitle: "VOTING RECEIPT",
@@ -25,28 +26,43 @@ const VoteSuccess = ({ voterData, locationData, voteData }) => {
       receiptGenerated: true
     };
 
-    // Convert the object to a JSON string with proper formatting
-    const jsonContent = JSON.stringify(receiptData, null, 2); // null, 2 for pretty-printing
+    // Prepare data for backend (matches VoteCast schema)
+    const votePayload = {
+      name: voterData.name,
+      state: locationData.state,
+      district: locationData.district,
+      assembly: locationData.assembly,
+      voterId: voterData.voterId,
+      candidate: voteData.candidateName,
+      party: voteData.candidateParty,
+      voteId: voteData.voteId
+    };
 
-    // Create and download the JSON file
-    const element = document.createElement('a');
-    const file = new Blob([jsonContent], { type: 'application/json' });
-    element.href = URL.createObjectURL(file);
-    element.download = `vote-receipt-${voteData.voteId}.json`;
-    document.body.appendChild(element);
-    element.click();
-    document.body.removeChild(element);
+    try {
+      // Send POST request to backend
+      const response = await axios.post('http://localhost:4500/api/votes', votePayload);
+      console.log('Vote stored successfully:', response.data);
+      alert('Successfully submitted vote to server!');
 
-    // Clean up the URL object to free memory
-    URL.revokeObjectURL(element.href);
+      // Proceed with download only if backend save succeeds
+      const jsonContent = JSON.stringify(receiptData, null, 2);
+      const element = document.createElement('a');
+      const file = new Blob([jsonContent], { type: 'application/json' });
+      element.href = URL.createObjectURL(file);
+      element.download = `vote-receipt-${voteData.voteId}.json`;
+      document.body.appendChild(element);
+      element.click();
+      document.body.removeChild(element);
+      URL.revokeObjectURL(element.href);
+    } catch (err) {
+  console.error('Error storing vote:', err);
+  console.log('Server response:', err.response ? err.response.data : err.message);
+  alert('Failed to submit vote to server. Please try again.');
+}
   };
 
   return (
     <div className="voting-container final-success" style={{ display: 'block' }}>
-      <div className="header">
-        <h2>🎉 Vote Successful!</h2>
-        <p>Thank you for participating in the democratic process.</p>
-      </div>
       
       <div className="final-message">
         Your vote has been recorded and submitted to the election system.

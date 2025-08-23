@@ -48,8 +48,8 @@ const VoterRegistration = ({ onComplete }) => {
 
     if (!formData.voterId.trim()) {
       newErrors.voterId = 'Voter ID is required';
-    } else if (!/^[A-Z]{3}[0-9]{7}$/.test(formData.voterId.toUpperCase())) {
-      newErrors.voterId = 'Invalid Voter ID format (e.g., ABC1234567)';
+    } else if (/[^A-Za-z0-9]/g.test(formData.voterId.toUpperCase())) {
+      newErrors.voterId = 'Invalid Voter ID format (e.g., EPIC...)';
     }
 
     if (!formData.email.trim()) {
@@ -117,7 +117,7 @@ const VoterRegistration = ({ onComplete }) => {
             name="voterId"
             value={formData.voterId}
             onChange={handleInputChange}
-            placeholder="e.g., ABC1234567"
+            placeholder="e.g., EPIC0257663"
           />
           {errors.voterId && <div className="error" style={{ display: 'block' }}>{errors.voterId}</div>}
         </div>
