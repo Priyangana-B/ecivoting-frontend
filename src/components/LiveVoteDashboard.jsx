@@ -16,7 +16,7 @@ export default function LiveVoteCount() {
   useEffect(() => {
     const fetchVoteDashboard = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/voters`);
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/voters/vote-dashboard`);
         const dashboardData = response.data.data;
 
         setPartyData(prev =>

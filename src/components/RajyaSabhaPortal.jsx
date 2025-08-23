@@ -184,7 +184,7 @@ const RajyaSabhaPortal = () => {
         try {
             console.log('Sending request to server...'); // Debug log
 
-            const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/voters`, payload, {
+            const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/voters/authenticate`, payload, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
