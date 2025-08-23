@@ -1,27 +1,37 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "../assets/css/VoterEducation/LiveVoteCount.css";
 
 const parties = [
-  { name: "Party A", color: "#4caf50", votes: 0, logo: "🟢" },
-  { name: "Party B", color: "#2196f3", votes: 0, logo: "🔵" },
-  { name: "Party C", color: "#f44336", votes: 0, logo: "🔴" },
-  { name: "Party D", color: "#ff9800", votes: 0, logo: "🟠" },
-  { name: "Party E", color: "#9c27b0", votes: 0, logo: "🟣" },
+  { name: "Jan Pragati Manch", color: "#4caf50", votes: 0, logo: "🌅" },
+  { name: "Lok Shakti Morcha", color: "#2196f3", votes: 0, logo: "🤝" },
+  { name: "Independent", color: "#f44336", votes: 0, logo: "🍃" },
+  { name: "Lok Samaj Dal", color: "#ff9800", votes: 0, logo: "🌐" },
+  { name: "Niti Parishad", color: "#9c27b0", votes: 0, logo: "🕊️" },
 ];
 
 export default function LiveVoteCount() {
   const [partyData, setPartyData] = useState(parties);
 
-  // Simulate live vote updates
   useEffect(() => {
-    const interval = setInterval(() => {
-      setPartyData(prev =>
-        prev.map(p => ({
-          ...p,
-          votes: p.votes + Math.floor(Math.random() * 50) // random increment
-        }))
-      );
-    }, 2000);
+    const fetchVoteDashboard = async () => {
+      try {
+        const response = await axios.get("http://localhost:4500/api/vote-dashboard");
+        const dashboardData = response.data.data;
+
+        setPartyData(prev =>
+          prev.map(p => ({
+            ...p,
+            votes: dashboardData.find(d => d.partyName === p.name)?.voteCount || 0
+          }))
+        );
+      } catch (err) {
+        console.error("Error fetching vote dashboard:", err);
+      }
+    };
+
+    fetchVoteDashboard(); // Initial fetch
+    const interval = setInterval(fetchVoteDashboard, 5000); // Update every 5 seconds
     return () => clearInterval(interval);
   }, []);
 

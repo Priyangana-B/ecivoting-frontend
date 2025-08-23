@@ -5,7 +5,7 @@ export const candidatesData = {
       name: "Rahul Narwekar",
       party: "Jan Pragati Manch",
       photo: "RN",
-      promises: "Digital Mumbai, Tourism development",
+      promises: "Smart City, Tourism development",
       experience: "Speaker of Assembly, 10 years"
     },
     {
@@ -23,6 +23,22 @@ export const candidatesData = {
       photo: "PM",
       promises: "Environmental protection, Heritage conservation",
       experience: "Architect, 6 years"
+    },
+    {
+      id: 4,
+      name: "Devendra Bhatia",
+      party: "Lok Samaj Dal",
+      photo: "DB",
+      promises: "Water Monitor System, Improved Transportation",
+      experience: "Professor, 16 years"
+    },
+    {
+      id: 5,
+      name: "Kamala Devi",
+      party: "Niti Parishad",
+      photo: "KD",
+      promises: "Environmental protection, Social Ethics conservation",
+      experience: "High School Principal, 20 years"
     }
   ],
   mumbadevi: [
@@ -31,7 +47,7 @@ export const candidatesData = {
       name: "Rahul Narwekar",
       party: "Jan Pragati Manch",
       photo: "RN",
-      promises: "Digital Mumbai, Tourism development",
+      promises: "Smart City, Tourism development",
       experience: "Speaker of Assembly, 10 years"
     },
     {
@@ -49,6 +65,22 @@ export const candidatesData = {
       photo: "PM",
       promises: "Environmental protection, Heritage conservation",
       experience: "Architect, 6 years"
+    },
+    {
+      id: 4,
+      name: "Devendra Bhatia",
+      party: "Lok Samaj Dal",
+      photo: "DB",
+      promises: "Water Monitor System, Improved Transportation",
+      experience: "Professor, 16 years"
+    },
+    {
+      id: 5,
+      name: "Kamala Devi",
+      party: "Niti Parishad",
+      photo: "KD",
+      promises: "Environmental protection, Social Ethics conservation",
+      experience: "High School Principal, 20 years"
     }
   ],
 
@@ -58,7 +90,7 @@ export const candidatesData = {
       name: "Rahul Narwekar",
       party: "Jan Pragati Manch",
       photo: "RN",
-      promises: "Digital Mumbai, Tourism development",
+      promises: "Smart City, Tourism development",
       experience: "Speaker of Assembly, 10 years"
     },
     {
@@ -76,6 +108,22 @@ export const candidatesData = {
       photo: "PM",
       promises: "Environmental protection, Heritage conservation",
       experience: "Architect, 6 years"
+    },
+    {
+      id: 4,
+      name: "Devendra Bhatia",
+      party: "Lok Samaj Dal",
+      photo: "DB",
+      promises: "Water Monitor System, Improved Transportation",
+      experience: "Professor, 16 years"
+    },
+    {
+      id: 5,
+      name: "Kamala Devi",
+      party: "Niti Parishad",
+      photo: "KD",
+      promises: "Environmental protection, Social Ethics conservation",
+      experience: "High School Principal, 20 years"
     }
   ],
     colaba: [
@@ -84,7 +132,7 @@ export const candidatesData = {
       name: "Rahul Narwekar",
       party: "Jan Pragati Manch",
       photo: "RN",
-      promises: "Digital Mumbai, Tourism development",
+      promises: "Smart City, Tourism development",
       experience: "Speaker of Assembly, 10 years"
     },
     {
@@ -102,6 +150,22 @@ export const candidatesData = {
       photo: "PM",
       promises: "Environmental protection, Heritage conservation",
       experience: "Architect, 6 years"
+    },
+    {
+      id: 4,
+      name: "Devendra Bhatia",
+      party: "Lok Samaj Dal",
+      photo: "DB",
+      promises: "Water Monitor System, Improved Transportation",
+      experience: "Professor, 16 years"
+    },
+    {
+      id: 5,
+      name: "Kamala Devi",
+      party: "Niti Parishad",
+      photo: "KD",
+      promises: "Environmental protection, Social Ethics conservation",
+      experience: "High School Principal, 20 years"
     }
   ]
   // Add all other constituency candidates from your script.js file

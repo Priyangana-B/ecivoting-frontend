@@ -8,8 +8,8 @@
 
 .vote-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
 }
 
 .vote-card {
@@ -19,6 +19,8 @@
   padding: 15px;
   text-align: center;
   transition: transform 0.2s;
+  justify-content: center;
+  align-content: center;
 }
 
 .vote-card:hover {
