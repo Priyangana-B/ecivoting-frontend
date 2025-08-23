@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 
-import publication1Img from '../assets/images/publication1Img.png';
-import publication2Img from '../assets/images/publication2Img.png';
+import publication1Img from '../assets/Images/publication1Img.png';
+import publication2Img from '../assets/Images/publication2Img.png';
 
 import {
   FaArrowRight,
