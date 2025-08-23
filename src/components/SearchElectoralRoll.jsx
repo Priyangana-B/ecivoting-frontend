@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import '../assets/css/searchElectoralRoll.css';
+import '../assets/css/SearchElectoralRoll.css';
 
 const SearchElectoralRoll = () => {
   const [formData, setFormData] = useState({
