@@ -41,12 +41,12 @@
   "main": "eslint.config.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PRIYAMAY-MONDAL/Eci-Voting.git"
+    "url": "git+https://github.com/Priyangana-B/ecivoting-frontend.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/PRIYAMAY-MONDAL/Eci-Voting/issues"
+    "url": "https://github.com/Priyangana-B/ecivoting-frontend/issues"
   },
-  "homepage": "https://github.com/PRIYAMAY-MONDAL/Eci-Voting#readme"
+  "homepage": "https://github.com/Priyangana-B/ecivoting-frontend#readme"
 }

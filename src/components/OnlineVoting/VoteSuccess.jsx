@@ -40,7 +40,7 @@ const VoteSuccess = ({ voterData, locationData, voteData }) => {
 
     try {
       // Send POST request to backend
-      const response = await axios.post('http://localhost:4500/api/votes', votePayload);
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/voters`, votePayload);
       console.log('Vote stored successfully:', response.data);
       alert('Successfully submitted vote to server!');
 

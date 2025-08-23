@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../assets/css/register.css';
 import axios from 'axios';
 
+
 const Register = () => {
   const [formData, setFormData] = useState({
     fullName: '',
@@ -248,7 +249,7 @@ const Register = () => {
 
     // Success
     try {
-      let res = await axios.post('http://localhost:4500/api/voters', payload);
+      let res = await axios.post(`${import.meta.env.VITE_API_URL}/api/voters`, payload);
       console.log(res.data);
       showModal('Success!', `Your electoral roll registration has been submitted successfully. Your Epic ID is ${newVoterId} You will receive a confirmation shortly.`);
       // alert('Registration successful!');
