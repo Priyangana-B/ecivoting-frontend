@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../assets/css/register.css';
+import '../assets/css/Register.css';
 import axios from 'axios';
 
 
