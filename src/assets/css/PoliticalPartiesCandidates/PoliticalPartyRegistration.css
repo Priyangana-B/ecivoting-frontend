@@ -23,6 +23,7 @@
 /* Hero Section */
 .page-header {
   background: linear-gradient(135deg, #D1A980 0%, #748873 100%);
+  background-image: url("https://www.shutterstock.com/image-photo/republic-independence-day-horizontal-background-260nw-2252132599.jpg");
   background-size: cover;
   background-position: center; 
   background-repeat: no-repeat;
@@ -34,7 +35,7 @@
   margin-bottom: 50px;
 }
 
-.page-header img {
+/*.page-header img {
   background-size: cover;
   background-position: center; 
   background-repeat: no-repeat;
@@ -43,7 +44,7 @@
   padding: 80px 0;
   text-align: center;
   margin-bottom: 50px;
-}
+}*/
 
 .page-header h1 {
   font-size: 5rem;
