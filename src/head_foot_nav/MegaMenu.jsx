@@ -8,6 +8,7 @@ const menuSections = [
     title: 'ELECTORS',
     links: [
       { name: 'Register in Electoral Roll', href: 'Register' },
+      { name: 'Home page', href: 'Home' },
       { name: 'Download E-EPIC', href: 'DownloadEpic' },
       { name: 'Search Electoral Roll', href: 'SearchElectoralRoll' },
       { name: 'Update Elector Details', href: 'UpdateDetails' },
