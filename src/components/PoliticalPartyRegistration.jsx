@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import img1 from "../assets/Images/image1.jpg";
 import "../assets/css/PoliticalPartiesCandidates/PoliticalPartyRegistration.css"; // Updated path
 
 const PoliticalPartyRegistration = () => {
@@ -78,6 +79,7 @@ const PoliticalPartyRegistration = () => {
       {/* Hero Section */}
       <div className="page-header">
         <div className="container">
+          <img src={img1} alt="Political Party Registration" />
           <h1>Political Parties Registration</h1>
           <p>Registration and management of political parties under electoral laws</p>
         </div>
