@@ -18,7 +18,7 @@ import React, { useState } from "react";
 
 // ✅ Images with real captions
 const images = [
-  { src: "/public/Media_Image/photogalleryimg1.jpg", caption: "Inauguration Ceremony" },
+  { src: "./public/Media_Image/photogalleryimg1.jpg", caption: "Inauguration Ceremony" },
   { src: "/public/Media_Image/photogalleryimg2.jpg", caption: "Press Conference 2024" },
   { src: "/public/Media_Image/photogalleryimg3.jpg", caption: "Community Engagement Drive" },
   { src: "/public/Media_Image/photogalleryimg4.jpg", caption: "Election Awareness Campaign" },
