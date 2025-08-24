@@ -5,6 +5,14 @@ import Register from "../components/Register";
 // Data for the menu links, organized by section
 const menuSections = [
   {
+    title: 'Home',
+    links: [
+      { name: 'Home', href: 'Home' },
+      
+    ],
+    className: 'Home',
+  },
+  {
     title: 'ELECTORS',
     links: [
       { name: 'Register in Electoral Roll', href: 'Register' },

@@ -88,7 +88,7 @@ function App() {
       <Layout>
         <Routes>
           {/* Electors */}
-          <Route path="/" element={<Home />} />
+          <Route path="/Home" element={<Home />} />
           <Route path="/Electors_Home" element={<Electors_Home />} />
           <Route path="/Register" element={<Register />} />
           <Route path="/SearchElectoralRoll" element={<SearchElectoralRoll />} />
