@@ -23,7 +23,7 @@
 /* Hero Section */
 .page-header {
   background: linear-gradient(135deg, #D1A980 0%, #748873 100%);
-  background-image: url("https://www.shutterstock.com/image-photo/republic-independence-day-horizontal-background-260nw-2252132599.jpg");
+  background-image: url("https://www.ids.ac.uk/wp-content/uploads/2024/05/Blognews-story-1024x600-px-1.jpg");
   background-size: cover;
   background-position: center; 
   background-repeat: no-repeat;
@@ -59,6 +59,7 @@
   opacity: 0.9;
   max-width: 600px;
   margin: 0 auto;
+  color: black;
 }
 
 /* Main Content */
