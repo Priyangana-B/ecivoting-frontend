@@ -18,18 +18,18 @@ import React, { useState } from "react";
 
 // ✅ Images with real captions
 const images = [
-  { src: "/public/Media_Image/photogalleryimg1.jpg", caption: "Inauguration Ceremony" },
-  { src: "/public/Media_Image/photogalleryimg2.jpg", caption: "Press Conference 2024" },
-  { src: "/public/Media_Image/photogalleryimg3.jpg", caption: "Community Engagement Drive" },
-  { src: "/public/Media_Image/photogalleryimg4.jpg", caption: "Election Awareness Campaign" },
-  { src: "/public/Media_Image/photogalleryimg5.jpg", caption: "Team Strategy Meeting" },
-  { src: "/public/Media_Image/photogalleryimg6.jpg", caption: "Youth Voter Initiative" },
-  { src: "/public/Media_Image/photogalleryimg7.jpg", caption: "Digital Voting Demo" },
-  { src: "/public/Media_Image/photogalleryimg8.jpg", caption: "Polling Booth Setup" },
-  { src: "/public/Media_Image/photogalleryimg9.jpg", caption: "Media Interaction Day" },
-  { src: "/public/Media_Image/photogalleryimg10.jpg", caption: "Volunteer Appreciation Event" },
-  { src: "/public/Media_Image/photogalleryimg11.jpg", caption: "Training Session for Staff" },
-  { src: "/public/Media_Image/photogalleryimg12.jpg", caption: "Chief Election Officer Visit" },
+  { src: "/Media_Image/photogalleryimg1.jpg", caption: "Inauguration Ceremony" },
+  { src: "/Media_Image/photogalleryimg2.jpg", caption: "Press Conference 2024" },
+  { src: "/Media_Image/photogalleryimg3.jpg", caption: "Community Engagement Drive" },
+  { src: "/Media_Image/photogalleryimg4.jpg", caption: "Election Awareness Campaign" },
+  { src: "/Media_Image/photogalleryimg5.jpg", caption: "Team Strategy Meeting" },
+  { src: "/Media_Image/photogalleryimg6.jpg", caption: "Youth Voter Initiative" },
+  { src: "/Media_Image/photogalleryimg7.jpg", caption: "Digital Voting Demo" },
+  { src: "/Media_Image/photogalleryimg8.jpg", caption: "Polling Booth Setup" },
+  { src: "/Media_Image/photogalleryimg9.jpg", caption: "Media Interaction Day" },
+  { src: "/Media_Image/photogalleryimg10.jpg", caption: "Volunteer Appreciation Event" },
+  { src: "/Media_Image/photogalleryimg11.jpg", caption: "Training Session for Staff" },
+  { src: "/Media_Image/photogalleryimg12.jpg", caption: "Chief Election Officer Visit" },
 ];
 
 export default function PhotoGallery() {
@@ -108,7 +108,7 @@ export default function PhotoGallery() {
             onClick={() => setMainImage(img)}
           >
             <img
-              src="/public/Media_Image/photogalleryimg1.jpg"
+              src={img.src}
               alt={`Thumbnail ${index + 1}`}
               style={{
                 width: "100%",
